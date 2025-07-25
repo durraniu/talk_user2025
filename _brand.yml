@@ -1,0 +1,59 @@
+meta:
+  name: slides
+
+color:
+  palette:
+    white: "#FFFFFF"
+    navy: "#1A3A6D"
+    red: "#B71C1C"
+
+  foreground: navy
+  background: white
+  primary: navy
+  secondary: red
+  tertiary: white
+  info: navy
+  warning: red
+  danger: red
+  light: white
+  dark: navy
+
+typography:
+  fonts:
+    - family: Alatsi
+      source: bunny
+      weight: [400, 700]
+    - family: Montserrat
+      source: bunny
+      weight: [400, 700]
+
+  base:
+    family: Roboto
+    weight: 400
+    size: 1.5rem
+    line-height: 1.5
+
+  headings:
+    family: Alatsi
+    weight: 700
+    style: normal
+    line-height: 1.2
+    color: primary
+
+  monospace:
+    family: monospace
+    weight: 400
+    size: 1.5rem
+  monospace-inline:
+    color: secondary
+    background-color: "#f8f9fa"
+    size: 1.5rem
+  monospace-block:
+    color: foreground
+    background-color: background
+    line-height: 1.4
+  link:
+    weight: 700
+    color: "#0066cc"
+    background-color: transparent
+    decoration: underline

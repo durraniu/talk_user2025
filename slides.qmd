@@ -8,6 +8,7 @@ format:
   revealjs:
     transition: "fade"
     backgroundTransition: "fade"
+    margin: 0.05
 ---
 
 ## What is a Web API?
@@ -78,7 +79,7 @@ resp <- request("https://newton.now.sh/api/v2/abs/-10") |>
 as.numeric(resp$result)
 ```
 
-# `httr2` request step by step 
+# The Whole Game
 
 ## Step 0: Load `httr2`
 
@@ -143,7 +144,20 @@ Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/
 :::    
 
 
+
+
 ## Step 2: Perform the request
+
+```{r}
+#| echo: true
+library(httr2)
+request("https://newton.now.sh/api/v2/") |>
+  req_url_path_append("abs", "-10") |> 
+  req_perform() 
+```
+
+
+## Step 3: Get the results
 
 :::: columns
 
@@ -153,7 +167,8 @@ Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
-  req_perform() 
+  req_perform() |> 
+  resp_raw()
 ```
 :::
 
@@ -180,15 +195,70 @@ Source: [API calls and HTTP Status codes](https://www.youtube.com/watch?v=LtNSd_
 
 ## What is JSON?
 
-**J**ava**S**cript **O**bject **N**otation
+**J**ava**S**cript **O**bject **N**otation is a format for exchanging data
 
+:::: columns
+
+::: {.column width="50%"}
+JSON:
 ```{r}
 #| echo: true
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
-  req_perform()  
+  req_perform() |> 
+  resp_raw()
 ```
+:::
+
+::: {.column width="50%"}
+Parsed JSON:
+```{r}
+#| echo: true
+library(httr2)
+request("https://newton.now.sh/api/v2/") |>
+  req_url_path_append("abs", "-10") |> 
+  req_perform() |> 
+  resp_body_json()
+```
+:::
+
+::::
+
+
+
+# Complicated Example
+
+An app to:
+
+- create, illustrate, and narrate fictional stories  
+- store and retrieve the stories
+
+## Storytelling App
+
+::: {style="position: relative; height: 400px;"}
+
+<div style="display: flex; justify-content: space-around;">
+  <img src="assets/images/storytelling.png" style="width: 150px;" id="img1">
+  <img src="assets/images/frstore.png" style="width: 150px;" id="img2">
+</div>
+
+<svg style="position: absolute; top: 160px; left: 0; width: 100%; height: 100px;">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
+    </marker>
+  </defs>
+  <line x1="25%" y1="0" x2="50%" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="75%" y1="0" x2="50%" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+</svg>
+
+<div style="display: flex; justify-content: center; margin-top: 60px;">
+  <img src="assets/images/stoytelling_app.png" style="width: 150px;">
+</div>
+
+:::
+
 
 
 ## Resources:
