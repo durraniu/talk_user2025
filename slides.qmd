@@ -1,0 +1,216 @@
+---
+title: "Web APIs for useRs"
+subtitle: "Getting data from websites, databases, and LLMs"
+author: "Umair Durrani"
+mermaid-format: svg
+code-annotations: hover
+format: 
+  revealjs:
+    transition: "fade"
+    backgroundTransition: "fade"
+---
+
+## What is a Web API?
+
+From an R user's perspective: A **function** to get data from the internet  
+
+
+
+
+## Defintion 
+
+> An API (Application Programming Interface) is a connection between computer programs.  
+
+> A web API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.
+
+:::footer
+Source: Wikipedia and [A gRadual intRoduction to Web APIs and JSON](https://laderast.github.io/intro_apis_ukraine/#/title-slide)  
+:::    
+
+
+##
+
+![](assets/images/api_slide.png)  
+
+:::footer
+Source: [Demystifying APIs for Researchers](https://cct-datascience.quarto.pub/demystifying-apis-slides/#/title-slide) 
+::: 
+
+
+## Example: Absolute value function
+
+```{mermaid}
+%%| fig-width: 8.5
+flowchart LR
+    A[Input: -10] --> B([Function: abs])
+    B --> C[Output: 10]
+```
+
+
+## Example: Absolute value function in R
+
+```{r}
+#| echo: true
+abs(-10.5)
+```
+
+## Example: Absolute value with a Web API
+
+```{mermaid}
+%%| fig-width: 8.5
+flowchart LR
+    A[Input: -10] --> B([Endpoint: abs])
+    B --> C[Output: 10]
+    
+    style B fill:#fff3e0
+```
+
+
+## Example: Absolute value with [Simple Math API](https://github.com/aunyks/newton-api)
+
+```{r}
+#| echo: true
+library(httr2)
+resp <- request("https://newton.now.sh/api/v2/abs/-10") |> 
+    req_perform() |> 
+    resp_body_json()
+
+as.numeric(resp$result)
+```
+
+# `httr2` request step by step 
+
+## Step 0: Load `httr2`
+
+> httr2 is a comprehensive HTTP client that provides a modern, pipeable API for working with web APIs. 
+
+```{r}
+#| echo: true
+library(httr2)
+```
+
+## Step 1: Create a request
+
+```{r}
+#| echo: true
+library(httr2)
+request("https://newton.now.sh/api/v2/abs/-10")
+```
+
+Separate the base URL and endpoint:
+
+```{r}
+#| echo: true
+request("https://newton.now.sh/api/v2/") |> # <1>
+  req_url_path_append("abs") |>             # <2>
+  req_url_path_append("-10")                # <3>
+```
+1. Base URL  
+2. Endpoint  
+3. Parameter
+
+> Endpoints are ways to communicate with the API
+
+
+## This is what will be sent to the server
+
+:::: columns
+
+::: {.column width="70%"}
+```{r}
+#| echo: true
+library(httr2)
+request("https://newton.now.sh/api/v2/") |>
+  req_url_path_append("abs", "-10") |> 
+  req_dry_run()
+```
+:::
+
+::: {.column width="30%"}
+![](assets/images/http-request.svg)
+:::
+
+::::
+
+Other methods:   
+
+- POST  
+- PATCH  
+- DELETE  
+
+:::footer
+Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#requests)  
+:::    
+
+
+## Step 2: Perform the request
+
+:::: columns
+
+::: {.column width="70%"}
+```{r}
+#| echo: true
+library(httr2)
+request("https://newton.now.sh/api/v2/") |>
+  req_url_path_append("abs", "-10") |> 
+  req_perform() 
+```
+:::
+
+::: {.column width="30%"}
+![](assets/images/http-response.svg)
+:::
+
+::::
+
+:::footer
+Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#responses)  
+:::    
+
+
+
+## 
+
+![](assets/images/http_status_codes.webp)
+
+:::footer
+Source: [API calls and HTTP Status codes](https://www.youtube.com/watch?v=LtNSd_4txVc)  
+::: 
+
+
+## What is JSON?
+
+**J**ava**S**cript **O**bject **N**otation
+
+```{r}
+#| echo: true
+library(httr2)
+request("https://newton.now.sh/api/v2/") |>
+  req_url_path_append("abs", "-10") |> 
+  req_perform()  
+```
+
+
+## Resources:
+
+- [How to Get Data From APIs with R & {httr2} | Ultimate Step-By-Step Tutorial](https://www.youtube.com/watch?v=hmtE4QGIOuk)
+
+* purrr::pluck can be used to get elements from a nested list
+
+- [Demystifying APIs for Researchers](https://cct-datascience.quarto.pub/demystifying-apis-slides/#/title-slide)
+
+* api_slide.png   
+* structure of an api request  
+* building an api request:  
+1. create a request  
+2. perform the request  
+3. get the results
+
+- [A gRadual intRoduction to Web APIs and JSON](https://laderast.github.io/intro_apis_ukraine/#/title-slide)  
+
+> A web API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.
+
+> Endpoints are ways to communicate with the API
+
+* JSON = JavaScript Object Notation
+* JSON translation: https://laderast.github.io/intro_apis_ukraine/#/json-versus-r-lists
