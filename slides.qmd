@@ -9,6 +9,7 @@ format:
     transition: "fade"
     backgroundTransition: "fade"
     margin: 0.05
+    width: 1800
 ---
 
 ## What is a Web API?
@@ -227,7 +228,7 @@ request("https://newton.now.sh/api/v2/") |>
 
 
 
-# Complicated Example
+# Advanced Example
 
 An app to:
 
@@ -236,28 +237,173 @@ An app to:
 
 ## Storytelling App
 
-::: {style="position: relative; height: 400px;"}
+![](assets/images/storytelling.png){.absolute top=100 left=0 width="230" height="250"}
 
-<div style="display: flex; justify-content: space-around;">
-  <img src="assets/images/storytelling.png" style="width: 150px;" id="img1">
-  <img src="assets/images/frstore.png" style="width: 150px;" id="img2">
-</div>
+![](assets/images/frstore.png){.absolute top=100 right=100 width="230" height="250"}
 
-<svg style="position: absolute; top: 160px; left: 0; width: 100%; height: 100px;">
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L0,6 L9,3 z" fill="#000" />
-    </marker>
-  </defs>
-  <line x1="25%" y1="0" x2="50%" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
-  <line x1="75%" y1="0" x2="50%" y2="100" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
-</svg>
+![](assets/images/storytelling_app.png){.absolute top=300 left=280 width="400" height="300"}
 
-<div style="display: flex; justify-content: center; margin-top: 60px;">
-  <img src="assets/images/stoytelling_app.png" style="width: 150px;">
-</div>
+# Request a Large Language Model (LLM) for story text
+
+## curl translate
+
+## Inputs
+
+```{r}
+#| echo: true
+user_prompt <- "Tell me a story about a dragon who baked cookies"
+system_prompt <- "You tell short fictional stories"
+max_tokens <- 1000
+ACCOUNT_ID <- "AccountID"
+API_KEY <- "API-key"
+base_url <- "https://api.cloudflare.com/client/v4/accounts/"
+model <- "@cf/meta/llama-3.1-8b-instruct-fast"
+```
+
+## Start creating the request
+
+```{r}
+#| echo: true
+#| output-location: column
+user_prompt <- "Tell me a story about a dragon who baked cookies"
+system_prompt <- "You tell short fictional stories"
+max_tokens <- 1000
+ACCOUNT_ID <- "AccountID"
+API_KEY <- "API-key"
+base_url <- "https://api.cloudflare.com/client/v4/accounts/"
+model <- "@cf/meta/llama-3.1-8b-instruct-fast"
+
+library(httr2)
+req <- request(base_url) |>
+  req_url_path_append(ACCOUNT_ID, "ai/run", model)
+req
+```
+
+## Authenticate
+
+```{r}
+#| echo: true
+#| output-location: column
+user_prompt <- "Tell me a story about a dragon who baked cookies"
+system_prompt <- "You tell short fictional stories"
+max_tokens <- 1000
+ACCOUNT_ID <- "AccountID"
+API_KEY <- "API-key"
+base_url <- "https://api.cloudflare.com/client/v4/accounts/"
+model <- "@cf/meta/llama-3.1-8b-instruct-fast"
+
+library(httr2)
+req <- request(base_url) |>
+  req_url_path_append(ACCOUNT_ID, "ai/run", model) |> 
+  req_auth_bearer_token(API_KEY)
+req
+```
+
+
+## Provide request body
+
+```{r}
+#| echo: true
+#| output-location: column
+user_prompt <- "Tell me a story about a dragon who baked cookies"
+system_prompt <- "You tell short fictional stories"
+max_tokens <- 1000
+ACCOUNT_ID <- "AccountID"
+API_KEY <- "API-key"
+base_url <- "https://api.cloudflare.com/client/v4/accounts/"
+model <- "@cf/meta/llama-3.1-8b-instruct-fast"
+
+library(httr2)
+req <- request(base_url) |>
+  req_url_path_append(ACCOUNT_ID, "ai/run", model) |> 
+  req_auth_bearer_token(API_KEY) |> 
+  req_body_json(
+    list(
+      max_tokens = max_tokens,
+      messages = list(
+        list(
+          role = "system",
+          content = system_prompt
+        ),
+        list(
+          role = "user",
+          content = user_prompt
+        )
+      ))
+  )
+req
+```
+
+
+## Perform the request and get the response
+
+```{r}
+ACCOUNT_ID <- Sys.getenv("CLOUDFLARE_ACCOUNT_ID")
+API_KEY <- Sys.getenv("CLOUDFLARE_API_KEY")
+```
+
+
+:::: columns
+
+::: {.column width="60%"}
+```{r}
+#| echo: true
+#| eval: false
+library(httr2)
+resp <- request(base_url) |>
+  req_url_path_append(ACCOUNT_ID, "ai/run", model) |> 
+  req_auth_bearer_token(API_KEY) |> 
+  req_body_json(
+    list(
+      max_tokens = max_tokens,
+      messages = list(
+        list(
+          role = "system",
+          content = system_prompt
+        ),
+        list(
+          role = "user",
+          content = user_prompt
+        )
+      ))
+  ) |> 
+  req_perform() |>
+  resp_body_json()
+resp
+```
 
 :::
+
+::: {.column width="40%"}
+```{r}
+load(file = "assets/res/resp.rda")
+resp
+```
+:::
+
+::::
+
+
+
+
+
+
+## Process the response
+
+```{r}
+#| echo: true
+#| output-location: column
+if (isTRUE(resp$success)){
+  full_text <- resp$result$response 
+  cleaned_text <- gsub("\n", "", full_text)
+  temp_text <- gsub("\\b(Dr|Mr|Mrs|Ms|St|Jr|Sr|vs|etc|U\\.S)\\.", "\\1<PERIOD>", cleaned_text)
+  split_text <- unlist(strsplit(temp_text, "(?<=\\.)\\s+(?=[A-Z])", perl = TRUE))
+  split_text <- gsub("<PERIOD>", ".", split_text)
+} else {
+  split_text <- NULL
+}
+split_text
+```
 
 
 
