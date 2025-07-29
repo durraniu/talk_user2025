@@ -1,42 +1,69 @@
 ---
-title: "Web APIs for useRs"
-subtitle: "Getting data from websites, databases, and LLMs"
-author: "Umair Durrani"
 mermaid-format: svg
 code-annotations: hover
+revealjs-plugins:
+  - highlightword
 format: 
   revealjs:
-    transition: "fade"
-    backgroundTransition: "fade"
+    preview-links: true
+    slide-number: true
     margin: 0.05
-    width: 1800
+    width: 1600
+    theme: "assets/styles/custom.scss"
 ---
 
-## What is a Web API?
 
-From an R user's perspective: A **function** to get data from the internet  
+## {.top background-video="assets/images/bg_video.mp4" background-video-loop="true"}
+
+::: {.titlebox style="text-align:center; font-size: 2.5em;"}
+**Web APIs for useRs**
+
+[Getting data from websites, databases, and LLMs]{style="font-size:0.75em;"}
+
+[Umair Durrani (Data Scientist at Presage Group)]{style="font-size:0.65em;"}
+:::
+
+## We're going to discuss ...
+
+1. What is a Web API?  
+2. Simple example  
+3. Advanced example: Communicating with LLMs and storing data  
+
+
+# A web API is like a **function** that exchanges data with the internet  
 
 
 
 
-## Defintion 
+## Defintions 
+
+. . .  
 
 > An API (Application Programming Interface) is a connection between computer programs.  
 
+. . .  
+
 > A web API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.
 
-:::footer
-Source: Wikipedia and [A gRadual intRoduction to Web APIs and JSON](https://laderast.github.io/intro_apis_ukraine/#/title-slide)  
+
+::: footer
+Source: Wikipedia and [A gRadual intRoduction to Web APIs and JSON](https://laderast.github.io/intro_apis_ukraine/#/title-slide)
 :::    
+
+
+
 
 
 ##
 
 ![](assets/images/api_slide.png)  
 
-:::footer
+
+::: footer 
 Source: [Demystifying APIs for Researchers](https://cct-datascience.quarto.pub/demystifying-apis-slides/#/title-slide) 
 ::: 
+
+
 
 
 ## Example: Absolute value function
@@ -49,12 +76,19 @@ flowchart LR
 ```
 
 
+
+
+
 ## Example: Absolute value function in R
 
 ```{r}
 #| echo: true
+#| output-location: fragment
 abs(-10.5)
 ```
+
+
+
 
 ## Example: Absolute value with a Web API
 
@@ -68,10 +102,13 @@ flowchart LR
 ```
 
 
+
+
 ## Example: Absolute value with [Simple Math API](https://github.com/aunyks/newton-api)
 
 ```{r}
 #| echo: true
+#| output-location: fragment
 library(httr2)
 resp <- request("https://newton.now.sh/api/v2/abs/-10") |> 
     req_perform() |> 
@@ -80,7 +117,11 @@ resp <- request("https://newton.now.sh/api/v2/abs/-10") |>
 as.numeric(resp$result)
 ```
 
+
+
 # The Whole Game
+
+
 
 ## Step 0: Load `httr2`
 
@@ -91,18 +132,26 @@ as.numeric(resp$result)
 library(httr2)
 ```
 
+
+
 ## Step 1: Create a request
 
 ```{r}
 #| echo: true
+#| output-location: column-fragment
+#| code-line-numbers: "2"
 library(httr2)
 request("https://newton.now.sh/api/v2/abs/-10")
 ```
+
+. . .   
 
 Separate the base URL and endpoint:
 
 ```{r}
 #| echo: true
+#| output-location: column-fragment
+#| code-line-numbers: "1|2|3"
 request("https://newton.now.sh/api/v2/") |> # <1>
   req_url_path_append("abs") |>             # <2>
   req_url_path_append("-10")                # <3>
@@ -111,16 +160,26 @@ request("https://newton.now.sh/api/v2/") |> # <1>
 2. Endpoint  
 3. Parameter
 
-> Endpoints are ways to communicate with the API
+. . .  
+
+> An API endpoint is a URL that acts as the point of contact between an API client and an API server.
+
+::: footer 
+Source: [What is an API endpoint?](https://blog.postman.com/what-is-an-api-endpoint/)
+:::
 
 
-## This is what will be sent to the server
+
+
+## This will be sent to the server
 
 :::: columns
 
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| echo: true
+#| output-location: fragment
+#| code-line-numbers: "2-3|4"
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
@@ -128,11 +187,13 @@ request("https://newton.now.sh/api/v2/") |>
 ```
 :::
 
-::: {.column width="30%"}
+::: {.column width="40%"}
 ![](assets/images/http-request.svg)
 :::
 
 ::::
+
+. . . 
 
 Other methods:   
 
@@ -140,7 +201,7 @@ Other methods:
 - PATCH  
 - DELETE  
 
-:::footer
+::: footer
 Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#requests)  
 :::    
 
@@ -151,6 +212,8 @@ Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/
 
 ```{r}
 #| echo: true
+#| output-location: fragment
+#| code-line-numbers: "2-3|4"
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
@@ -158,13 +221,17 @@ request("https://newton.now.sh/api/v2/") |>
 ```
 
 
+
+
 ## Step 3: Get the results
 
 :::: columns
 
-::: {.column width="70%"}
+::: {.column width="60%"}
 ```{r}
 #| echo: true
+#| output-location: fragment
+#| code-line-numbers: "2-4|5"
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
@@ -173,13 +240,14 @@ request("https://newton.now.sh/api/v2/") |>
 ```
 :::
 
-::: {.column width="30%"}
+::: {.column width="40%"}
 ![](assets/images/http-response.svg)
 :::
 
 ::::
 
-:::footer
+
+::: footer
 Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#responses)  
 :::    
 
@@ -189,14 +257,15 @@ Source: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/
 
 ![](assets/images/http_status_codes.webp)
 
-:::footer
+::: footer
 Source: [API calls and HTTP Status codes](https://www.youtube.com/watch?v=LtNSd_4txVc)  
 ::: 
 
 
-## What is JSON?
 
-**J**ava**S**cript **O**bject **N**otation is a format for exchanging data
+
+
+## **J**ava**S**cript **O**bject **N**otation is a format for exchanging data
 
 :::: columns
 
@@ -204,6 +273,8 @@ Source: [API calls and HTTP Status codes](https://www.youtube.com/watch?v=LtNSd_
 JSON:
 ```{r}
 #| echo: true
+#| code-line-numbers: "2-4|5"
+#| output-location: fragment
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
@@ -216,6 +287,8 @@ request("https://newton.now.sh/api/v2/") |>
 Parsed JSON:
 ```{r}
 #| echo: true
+#| code-line-numbers: "2-4|5"
+#| output-location: fragment
 library(httr2)
 request("https://newton.now.sh/api/v2/") |>
   req_url_path_append("abs", "-10") |> 
@@ -228,106 +301,214 @@ request("https://newton.now.sh/api/v2/") |>
 
 
 
+
 # Advanced Example
 
 An app to:
 
 - create, illustrate, and narrate fictional stories  
 - store and retrieve the stories
+- [App](https://01983eb1-571e-c412-ea19-65f74e04956d.share.connect.posit.cloud/)
+
+
+
 
 ## Storytelling App
 
-![](assets/images/storytelling.png){.absolute top=100 left=0 width="230" height="250"}
+:::: columns
 
-![](assets/images/frstore.png){.absolute top=100 right=100 width="230" height="250"}
+::: {.column width="50%"}
+::: {.fragment}
+![](assets/images/storytelling.png){width="230" height="250"}  
 
-![](assets/images/storytelling_app.png){.absolute top=300 left=280 width="400" height="300"}
+Functions for story text, image, and speech generation  
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.fragment}
+![](assets/images/frstore.png){width="230" height="250"}  
+
+Functions for `GET`ting and `POST`ing data to Google Cloud Firestore Database  
+:::
+:::
+
+::::
+
+. . . 
+
+Both packages use `httr2`
+
+
+
+## Generating content in the Storytelling App
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "1|2-6|8-9|10-11|13-14|19-24"
+library(storytelling)
+create_experience <- function(user_prompt,
+                              num_paras,
+                              genre,
+                              style,
+                              narrate){
+
+  story <- generate_story(user_prompt, num_paras, genre)
+  title <- story$title
+  image_prompts <- generate_image_prompts(story$story)
+  all_images <- generate_images(image_prompts, style)
+
+  if (narrate){
+    audios <- generate_audio(story$story, model = "google")
+  } else {
+    audios <- NULL
+  }
+
+  list(
+    "story" = story$story,
+    "title" = title,
+    "images" = all_images,
+    "speech" = audios
+  )
+}
+```
+
+
 
 # Request a Large Language Model (LLM) for story text
 
-## curl translate
+## Workers AI Models at Cloudflare  
 
-## Inputs
+Generous usage under free tier  
+
+[Documentation for `llama 3.1 8b instruct`](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/)
+
+
+
+
+## cURL request 
+
+Base URL and endpoint
+
+::: {.fragment .highlightword word="https://api.cloudflare.com/client/v4/accounts/" style="background:yellow;"}
+:::
+
+::: {.fragment .highlightword word="ai/run/@cf/meta/llama-3.1-8b-instruct-fast" style="background:yellow;"}
+:::
+
+```curl
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```
+
+
+## cURL request 
+
+Authorization  
+
+::: {.fragment .highlightword word="$CLOUDFLARE_ACCOUNT_ID" style="background:yellow;"}
+:::
+
+::: {.fragment .highlightword word="$CLOUDFLARE_AUTH_TOKEN" style="background:yellow;"}
+:::
+
+```curl
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'
+```
+  
+  
+## cURL request 
+
+Request type (`POST`) and body
+
+::: {.fragment .highlightword word="POST" style="background:yellow;"}
+:::
+
+::: {.fragment .highlightword word="{ 'messages': [{ 'role': 'system', 'content': 'You are a friendly assistant' }, { 'role': 'user', 'content': 'Why is pizza so good' }]}" style="background:yellow;"}
+:::
+
+
+```curl
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \
+  -X POST \
+  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
+  -d '{ 'messages': [{ 'role': 'system', 'content': 'You are a friendly assistant' }, { 'role': 'user', 'content': 'Why is pizza so good' }]}'  
+```
+
+
+## Translate curl to httr2 request
 
 ```{r}
 #| echo: true
-user_prompt <- "Tell me a story about a dragon who baked cookies"
-system_prompt <- "You tell short fictional stories"
-max_tokens <- 1000
-ACCOUNT_ID <- "AccountID"
-API_KEY <- "API-key"
-base_url <- "https://api.cloudflare.com/client/v4/accounts/"
-model <- "@cf/meta/llama-3.1-8b-instruct-fast"
+#| output-location: fragment
+httr2::curl_translate(
+  "curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \
+  -X POST \
+  -H 'Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN' \
+  -d '{\"messages\": [{\"role\": \"system\", \"content\": \"You are a friendly assistant\"}, {\"role\": \"user\", \"content\": \"Why is pizza so good\"}]}'"
+)
 ```
+
+. . . 
+
+We can do better!
+
 
 ## Start creating the request
 
 ```{r}
 #| echo: true
-#| output-location: column
-user_prompt <- "Tell me a story about a dragon who baked cookies"
-system_prompt <- "You tell short fictional stories"
-max_tokens <- 1000
-ACCOUNT_ID <- "AccountID"
-API_KEY <- "API-key"
-base_url <- "https://api.cloudflare.com/client/v4/accounts/"
-model <- "@cf/meta/llama-3.1-8b-instruct-fast"
-
+#| output-location: fragment
 library(httr2)
-req <- request(base_url) |>
-  req_url_path_append(ACCOUNT_ID, "ai/run", model)
+req <- request("https://api.cloudflare.com/client/v4/accounts/") |>
+  req_url_path_append("AccountID", "ai/run", "@cf/meta/llama-3.1-8b-instruct-fast")
 req
 ```
 
-## Authenticate
+
+## Authorize
 
 ```{r}
 #| echo: true
-#| output-location: column
-user_prompt <- "Tell me a story about a dragon who baked cookies"
-system_prompt <- "You tell short fictional stories"
-max_tokens <- 1000
-ACCOUNT_ID <- "AccountID"
-API_KEY <- "API-key"
-base_url <- "https://api.cloudflare.com/client/v4/accounts/"
-model <- "@cf/meta/llama-3.1-8b-instruct-fast"
-
+#| output-location: fragment
+#| code-line-numbers: "1-3|4"
 library(httr2)
-req <- request(base_url) |>
-  req_url_path_append(ACCOUNT_ID, "ai/run", model) |> 
-  req_auth_bearer_token(API_KEY)
+req <- request("https://api.cloudflare.com/client/v4/accounts/") |>
+  req_url_path_append("AccountID", "ai/run", "@cf/meta/llama-3.1-8b-instruct-fast") |> 
+  req_auth_bearer_token("API-key")
 req
 ```
+
 
 
 ## Provide request body
 
 ```{r}
 #| echo: true
-#| output-location: column
-user_prompt <- "Tell me a story about a dragon who baked cookies"
-system_prompt <- "You tell short fictional stories"
-max_tokens <- 1000
-ACCOUNT_ID <- "AccountID"
-API_KEY <- "API-key"
-base_url <- "https://api.cloudflare.com/client/v4/accounts/"
-model <- "@cf/meta/llama-3.1-8b-instruct-fast"
-
+#| output-location: fragment
+#| code-line-numbers: "4|5-18"
 library(httr2)
-req <- request(base_url) |>
-  req_url_path_append(ACCOUNT_ID, "ai/run", model) |> 
-  req_auth_bearer_token(API_KEY) |> 
+req <- request("https://api.cloudflare.com/client/v4/accounts/") |>
+  req_url_path_append("AccountID", "ai/run", "@cf/meta/llama-3.1-8b-instruct-fast") |> 
+  req_auth_bearer_token("API-key") |> 
   req_body_json(
     list(
-      max_tokens = max_tokens,
+      max_tokens = 1000,
       messages = list(
         list(
           role = "system",
-          content = system_prompt
+          content = "You tell short fictional stories"
         ),
         list(
           role = "user",
-          content = user_prompt
+          content = "Tell me a story about a dragon who baked cookies"
         )
       ))
   )
@@ -335,13 +516,8 @@ req
 ```
 
 
+
 ## Perform the request and get the response
-
-```{r}
-ACCOUNT_ID <- Sys.getenv("CLOUDFLARE_ACCOUNT_ID")
-API_KEY <- Sys.getenv("CLOUDFLARE_API_KEY")
-```
-
 
 :::: columns
 
@@ -349,21 +525,22 @@ API_KEY <- Sys.getenv("CLOUDFLARE_API_KEY")
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "4-18|19-20"
 library(httr2)
-resp <- request(base_url) |>
-  req_url_path_append(ACCOUNT_ID, "ai/run", model) |> 
-  req_auth_bearer_token(API_KEY) |> 
+resp <- request("https://api.cloudflare.com/client/v4/accounts/") |>
+  req_url_path_append("AccountID", "ai/run", "@cf/meta/llama-3.1-8b-instruct-fast") |> 
+  req_auth_bearer_token("API-key") |> 
   req_body_json(
     list(
-      max_tokens = max_tokens,
+      max_tokens = 1000,
       messages = list(
         list(
           role = "system",
-          content = system_prompt
+          content = "You tell short fictional stories"
         ),
         list(
           role = "user",
-          content = user_prompt
+          content = "Tell me a story about a dragon who baked cookies"
         )
       ))
   ) |> 
@@ -375,17 +552,15 @@ resp
 :::
 
 ::: {.column width="40%"}
+::: {.fragment}
 ```{r}
 load(file = "assets/res/resp.rda")
 resp
 ```
 :::
+:::
 
 ::::
-
-
-
-
 
 
 ## Process the response
@@ -406,27 +581,221 @@ split_text
 ```
 
 
+# `ellmer` makes the process smooth!
 
-## Resources:
+- Try different models  
+- Get structured output  
+
+## Generate story text with ellmer
+
+```{r}
+#| echo: true
+#| eval: false
+generate_story <- function(user_prompt,
+                           num_paras = 5,
+                           genre = c("<vector of genres>"),
+                           chat_fn = ellmer::chat_google_gemini,
+                           model = "gemini-2.0-flash",
+                           ...){
+  system_prompt <- generate_story_system_prompt(
+    genre = genre,
+    num_paras = num_paras
+  )
+
+  client <- make_chat(
+    chat_fn,
+    system_prompt = system_prompt,
+    model = model,
+    ...
+  )
+
+  res <- client$chat_structured(
+    user_prompt,
+    type = ellmer::type_object(
+        title = ellmer::type_string("Title of the story. One sentence max."),
+        story = ellmer::type_array(
+        paste0("Return exactly ",  num_paras,  " paragraphs, as an array. Each array element is a paragraph of the story. Do not return explanations or any text outside the array. Each paragraph must be self-contained, i.e., do not use blank lines or newlines to separate paragraphs inside elements."),
+        items = ellmer::type_string()
+      )
+    )
+  )
+
+  res
+}
+```
+
+
+
+## Generate multiple images in parallel
+
+```{r}
+#| echo: true
+#| eval: false
+generate_images <- function(image_prompts,
+                            ...){
+  reqs <- lapply(
+    image_prompts,
+    function(x){
+      req_single_image(x, image_prompts$negative_prompt, ...)
+    }
+  )
+  resps <- httr2::req_perform_parallel(reqs, on_error = "continue")
+  
+  # All images
+  lapply(resps, get_raw_image)
+}
+```
+
+
+# Storing the story on the Firestore database
+
+## Creating a request
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1-4|5|6-11|12-15"
+frstore_req <- function(document_path, 
+                        id_token, 
+                        project_id = "<project-id>", 
+                        base_url = "https://firestore.googleapis.com/v1beta1"){
+  httr2::request(base_url) |>
+    httr2::req_url_path_append(
+      "projects",
+      project_id,
+      "databases/(default)/documents",
+      document_path
+    ) |>
+    httr2::req_headers(
+      "Content-Type" = "application/json",
+      "Authorization" = paste("Bearer", id_token)
+    )
+}
+```
+
+
+## Handling errors
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|1|2|3-12|13"
+frstore_error_handler <- function(e) {
+  resp_err <- httr2::last_response()
+  if (!is.null(resp_err)) {
+    resp_err <- httr2::resp_body_json(resp_err)$error
+    err_list <- list(
+      error = list(
+        code = resp_err$code,
+        message = resp_err$message
+      )
+    )
+    return(err_list)
+  }
+  stop(conditionMessage(e), call. = FALSE)
+}
+```
+
+
+## Creating a document on Firestore database with story data
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|1|15-21"
+frstore_create_document <- function(document_path, id_token, data = NULL){
+  partial_path <- sub("/[^/]*$", "", document_path)
+  document <- tail(strsplit(document_path, "/")[[1]], 1)
+
+  if (is.null(data)){
+    tryCatch(
+      expr = frstore_req(partial_path, id_token) |>
+        httr2::req_url_query(documentId = document) |>
+        httr2::req_body_raw("{}", "application/json") |>
+        httr2::req_method("POST") |>
+        httr2::req_perform(),
+      error = frstore_error_handler
+    )
+  } else {
+    tryCatch(
+      expr = frstore_req(partial_path, id_token) |>
+        httr2::req_url_query(documentId = document) |>
+        httr2::req_body_json(data = data) |>
+        httr2::req_perform(),
+      error = frstore_error_handler
+    )
+  }
+}
+```
+
+## Storing the story on the Firestore database
+
+Save to database
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|1-2|3-5|6-25"
+# Upload images to imgur service
+img_urls <- purrr::map_chr(all_images, upload_image)
+# Store on firestore
+frstore_create_document(
+  paste0("story/", random_id()),
+  id_token,
+  list(
+    fields = list(
+      genre = list(stringValue = genre),
+      title = list(stringValue = title),
+      story = list(
+        arrayValue = list(
+          values = list(
+            lapply(story, function(x) list(stringValue = x))
+          )
+        )
+      ),
+      img_urls = list(
+        arrayValue = list(
+          values = list(
+            lapply(img_urls, function(x) list(stringValue = x))
+          )
+        )
+      )
+    )
+  )
+)
+```
+
+
+## 
+
+![](assets/images/firestore.PNG)
+
+
+## `httr2` goodies
+
+- `req_error()`  
+- `req_cache()`  
+- `req_throttle()`  
+- `resp_body_html()`  
+- Many more
+
+
+## Questions?
+
+- [storytelling](https://github.com/durraniu/storytelling)  
+- [App source](https://github.com/durraniu/storytelling_app)  
+- [frstore](https://github.com/Presage-Group/frstore)  
+
+![Check out the app](assets/images/qr-code.png)
+
+
+## References
 
 - [How to Get Data From APIs with R & {httr2} | Ultimate Step-By-Step Tutorial](https://www.youtube.com/watch?v=hmtE4QGIOuk)
 
-* purrr::pluck can be used to get elements from a nested list
 
 - [Demystifying APIs for Researchers](https://cct-datascience.quarto.pub/demystifying-apis-slides/#/title-slide)
 
-* api_slide.png   
-* structure of an api request  
-* building an api request:  
-1. create a request  
-2. perform the request  
-3. get the results
 
 - [A gRadual intRoduction to Web APIs and JSON](https://laderast.github.io/intro_apis_ukraine/#/title-slide)  
 
-> A web API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.
-
-> Endpoints are ways to communicate with the API
-
-* JSON = JavaScript Object Notation
-* JSON translation: https://laderast.github.io/intro_apis_ukraine/#/json-versus-r-lists

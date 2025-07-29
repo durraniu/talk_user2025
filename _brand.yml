@@ -3,7 +3,7 @@ meta:
 
 color:
   palette:
-    white: "#FFFFFF"
+    white: "#F5F5F5"
     navy: "#1A3A6D"
     red: "#B71C1C"
 
@@ -28,9 +28,9 @@ typography:
       weight: [400, 700]
 
   base:
-    family: Roboto
+    family: Montserrat
     weight: 400
-    size: 1.5rem
+    size: 2.0rem
     line-height: 1.5
 
   headings:
@@ -43,11 +43,11 @@ typography:
   monospace:
     family: monospace
     weight: 400
-    size: 1.5rem
+    size: 1.6rem
   monospace-inline:
     color: secondary
     background-color: "#f8f9fa"
-    size: 1.5rem
+    size: 2.0rem
   monospace-block:
     color: foreground
     background-color: background

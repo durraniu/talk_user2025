@@ -9,8 +9,7 @@
 <link href="slides_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <meta name="author" content="Umair Durrani">
-  <title>Web APIs for useRs</title>
+  <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -94,7 +93,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-b072df74540403a98bb7f091a5ae25c4.css">
+  <link rel="stylesheet" href="slides_files/libs/revealjs/dist/theme/quarto-73447fb132bd402f9406433690b0ef35.css">
   <link href="slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -192,36 +191,47 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Web APIs for useRs</h1>
-  <p class="subtitle">Getting data from websites, databases, and LLMs</p>
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Umair Durrani 
+<section id="section" class="slide level2 top" data-background-video="assets/images/bg_video.mp4" data-background-video-loop="true">
+<h2></h2>
+<div class="titlebox" style="text-align:center; font-size: 2.5em;">
+<p><strong>Web APIs for useRs</strong></p>
+<p><span style="font-size:0.75em;">Getting data from websites, databases, and LLMs</span></p>
+<p><span style="font-size:0.65em;">Umair Durrani (Data Scientist at Presage Group)</span></p>
 </div>
-</div>
-</div>
+</section>
+<section id="were-going-to-discuss" class="slide level2">
+<h2>We’re going to discuss …</h2>
+<ol type="1">
+<li>What is a Web API?<br>
+</li>
+<li>Simple example<br>
+</li>
+<li>Advanced example: Communicating with LLMs and storing data</li>
+</ol>
+</section>
+<section>
+<section id="a-web-api-is-like-a-function-that-exchanges-data-with-the-internet" class="title-slide slide level1 center">
+<h1>A web API is like a <strong>function</strong> that exchanges data with the internet</h1>
 
 </section>
-<section id="what-is-a-web-api" class="slide level2">
-<h2>What is a Web API?</h2>
-<p>From an R user’s perspective: A <strong>function</strong> to get data from the internet</p>
-</section>
-<section id="defintion" class="slide level2">
-<h2>Defintion</h2>
+<section id="defintions" class="slide level2">
+<h2>Defintions</h2>
+<div class="fragment">
 <blockquote>
 <p>An API (Application Programming Interface) is a connection between computer programs.</p>
 </blockquote>
+</div>
+<div class="fragment">
 <blockquote>
 <p>A web API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.</p>
 </blockquote>
 <div class="footer">
 <p>Source: Wikipedia and <a href="https://laderast.github.io/intro_apis_ukraine/#/title-slide">A gRadual intRoduction to Web APIs and JSON</a></p>
 </div>
+</div>
 </section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 
 <img data-src="assets/images/api_slide.png" class="r-stretch"><div class="footer">
@@ -237,7 +247,7 @@ Umair Durrani
 <div>
 <svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 505.171875 70" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="816" id="mermaid-figure-1" height="480">
 <style>#mermaid-figure-1{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478839281_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478839281_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478839281_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478839281_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753478839281_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753478839281_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1753478839281_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M138.547,35L142.714,35C146.88,35,155.214,35,161.464,35C167.714,35,171.88,35,175.38,35C178.88,35,181.714,35,183.13,35L184.547,35"></path><path marker-end="url(#mermaid-1753478839281_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M309.828,35L313.995,35C318.161,35,326.495,35,332.745,35C338.995,35,343.161,35,346.661,35C350.161,35,352.995,35,354.411,35L355.828,35"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814740791_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814740791_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1753814740791_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M138.547,35L142.714,35C146.88,35,155.214,35,161.464,35C167.714,35,171.88,35,175.38,35C178.88,35,181.714,35,183.13,35L184.547,35"></path><path marker-end="url(#mermaid-1753814740791_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M309.828,35L313.995,35C318.161,35,326.495,35,332.745,35C338.995,35,343.161,35,346.661,35C350.161,35,352.995,35,354.411,35L355.828,35"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
 <div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
 <span class="edgeLabel"></span>
 </div>
@@ -281,6 +291,8 @@ Output: 10
 <h2>Example: Absolute value function in R</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">abs</span>(<span class="sc">-</span><span class="fl">10.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.5</code></pre>
 </div>
@@ -295,7 +307,7 @@ Output: 10
 <div>
 <svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 506.515625 70" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="816" id="mermaid-figure-2" height="480">
 <style>#mermaid-figure-2{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .node .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478841683_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478841683_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478841683_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753478841683_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753478841683_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753478841683_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1753478841683_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M138.547,35L142.714,35C146.88,35,155.214,35,161.464,35C167.714,35,171.88,35,175.38,35C178.88,35,181.714,35,183.13,35L184.547,35"></path><path marker-end="url(#mermaid-1753478841683_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M311.172,35L315.339,35C319.505,35,327.839,35,334.089,35C340.339,35,344.505,35,348.005,35C351.505,35,354.339,35,355.755,35L357.172,35"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
+<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814743308_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814743308_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1753814743308_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M138.547,35L142.714,35C146.88,35,155.214,35,161.464,35C167.714,35,171.88,35,175.38,35C178.88,35,181.714,35,183.13,35L184.547,35"></path><path marker-end="url(#mermaid-1753814743308_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M311.172,35L315.339,35C319.505,35,327.839,35,334.089,35C340.339,35,344.505,35,348.005,35C351.505,35,354.339,35,355.755,35L357.172,35"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
 <div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
 <span class="edgeLabel"></span>
 </div>
@@ -344,11 +356,13 @@ Output: 10
 <span id="cb3-4"><a href=""></a>    <span class="fu">resp_body_json</span>()</span>
 <span id="cb3-5"><a href=""></a></span>
 <span id="cb3-6"><a href=""></a><span class="fu">as.numeric</span>(resp<span class="sc">$</span>result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
-</section>
+</section></section>
 <section>
 <section id="the-whole-game" class="title-slide slide level1 center">
 <h1>The Whole Game</h1>
@@ -365,20 +379,25 @@ Output: 10
 </section>
 <section id="step-1-create-a-request" class="slide level2">
 <h2>Step 1: Create a request</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
 <span id="cb6-2"><a href=""></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/abs/-10"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;httr2_request&gt;
 GET https://newton.now.sh/api/v2/abs/-10
 Body: empty</code></pre>
 </div>
-</div>
+</div></div>
+<div class="fragment">
 <p>Separate the base URL and endpoint:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="sourceCode cell-code" id="annotated-cell-5" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1">1</button><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1"></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="2">2</button><span id="annotated-cell-5-2" class="code-annotation-target"><a href="#annotated-cell-5-2"></a>  <span class="fu">req_url_path_append</span>(<span class="st">"abs"</span>) <span class="sc">|&gt;</span></span>
 <button class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="3">3</button><span id="annotated-cell-5-3" class="code-annotation-target"><a href="#annotated-cell-5-3"></a>  <span class="fu">req_url_path_append</span>(<span class="st">"-10"</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment">
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
@@ -402,20 +421,28 @@ Body: empty</code></pre>
 GET https://newton.now.sh/api/v2/abs/-10
 Body: empty</code></pre>
 </div>
+</div></div>
 </div>
+<div class="fragment">
 <blockquote>
-<p>Endpoints are ways to communicate with the API</p>
+<p>An API endpoint is a URL that acts as the point of contact between an API client and an API server.</p>
 </blockquote>
+<div class="footer">
+<p>Source: <a href="https://blog.postman.com/what-is-an-api-endpoint/">What is an API endpoint?</a></p>
+</div>
+</div>
 </section>
-<section id="this-is-what-will-be-sent-to-the-server" class="slide level2">
-<h2>This is what will be sent to the server</h2>
+<section id="this-will-be-sent-to-the-server" class="slide level2">
+<h2>This will be sent to the server</h2>
 <div class="columns">
-<div class="column" style="width:70%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="2-3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
 <span id="cb9-2"><a href=""></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"abs"</span>, <span class="st">"-10"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb9-4"><a href=""></a>  <span class="fu">req_dry_run</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>GET /api/v2/abs/-10 HTTP/1.1
 accept: */*
@@ -424,9 +451,10 @@ host: newton.now.sh
 user-agent: httr2/1.2.1 r-curl/6.4.0 libcurl/8.14.1</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
+</div><div class="column" style="width:40%;">
 <p><img data-src="assets/images/http-request.svg"></p>
 </div></div>
+<div class="fragment">
 <p>Other methods:</p>
 <ul>
 <li>POST<br>
@@ -438,14 +466,17 @@ user-agent: httr2/1.2.1 r-curl/6.4.0 libcurl/8.14.1</code></pre>
 <div class="footer">
 <p>Source: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#requests">MDN Web Docs</a></p>
 </div>
+</div>
 </section>
 <section id="step-2-perform-the-request" class="slide level2">
 <h2>Step 2: Perform the request</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="2-3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
 <span id="cb11-2"><a href=""></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"abs"</span>, <span class="st">"-10"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb11-4"><a href=""></a>  <span class="fu">req_perform</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;httr2_response&gt;
 GET https://newton.vercel.app/api/v2/abs/-10
@@ -458,13 +489,15 @@ Body: In memory (52 bytes)</code></pre>
 <section id="step-3-get-the-results" class="slide level2">
 <h2>Step 3: Get the results</h2>
 <div class="columns">
-<div class="column" style="width:70%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="2-4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
 <span id="cb13-2"><a href=""></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"abs"</span>, <span class="st">"-10"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb13-4"><a href=""></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb13-5"><a href=""></a>  <span class="fu">resp_raw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>HTTP/1.1 200 OK
 access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept
@@ -472,44 +505,45 @@ access-control-allow-origin: *
 age: 0
 cache-control: public, max-age=0, must-revalidate
 content-type: application/json; charset=utf-8
-date: Fri, 25 Jul 2025 21:27:13 GMT
+date: Tue, 29 Jul 2025 18:45:35 GMT
 etag: "34-ew5GLD/BhDbtLNRb9EMt8ij47mw"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-nextjs-page: /api/v2/[operation]/[data]
 x-vercel-cache: MISS
-x-vercel-id: cle1::sfo1::gvmds-1753478833159-14dc7c6ac10c
+x-vercel-id: cle1::sfo1::tc69c-1753814735058-0aa7fcdcb041
 content-length: 52
 
 {"operation":"abs","expression":"-10","result":"10"}</code></pre>
 </div>
 </div>
-</div><div class="column" style="width:30%;">
+</div><div class="column" style="width:40%;">
 <p><img data-src="assets/images/http-response.svg"></p>
 </div></div>
 <div class="footer">
 <p>Source: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#responses">MDN Web Docs</a></p>
 </div>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 
 <img data-src="assets/images/http_status_codes.webp" class="r-stretch"><div class="footer">
 <p>Source: <a href="https://www.youtube.com/watch?v=LtNSd_4txVc">API calls and HTTP Status codes</a></p>
 </div>
 </section>
-<section id="what-is-json" class="slide level2">
-<h2>What is JSON?</h2>
-<p><strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation is a format for exchanging data</p>
+<section id="javascript-object-notation-is-a-format-for-exchanging-data" class="slide level2">
+<h2><strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation is a format for exchanging data</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>JSON:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="2-4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
 <span id="cb15-2"><a href=""></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb15-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"abs"</span>, <span class="st">"-10"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb15-4"><a href=""></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb15-5"><a href=""></a>  <span class="fu">resp_raw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>HTTP/1.1 200 OK
 access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept
@@ -517,13 +551,13 @@ access-control-allow-origin: *
 age: 0
 cache-control: public, max-age=0, must-revalidate
 content-type: application/json; charset=utf-8
-date: Fri, 25 Jul 2025 21:27:13 GMT
+date: Tue, 29 Jul 2025 18:45:35 GMT
 etag: "34-ew5GLD/BhDbtLNRb9EMt8ij47mw"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-nextjs-page: /api/v2/[operation]/[data]
 x-vercel-cache: MISS
-x-vercel-id: cle1::sfo1::kp8pj-1753478833478-471fa6ef13bb
+x-vercel-id: cle1::sfo1::2w748-1753814735280-73e4b511c424
 content-length: 52
 
 {"operation":"abs","expression":"-10","result":"10"}</code></pre>
@@ -532,11 +566,13 @@ content-length: 52
 </div><div class="column" style="width:50%;">
 <p>Parsed JSON:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="2-4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
 <span id="cb17-2"><a href=""></a><span class="fu">request</span>(<span class="st">"https://newton.now.sh/api/v2/"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb17-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"abs"</span>, <span class="st">"-10"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb17-4"><a href=""></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb17-5"><a href=""></a>  <span class="fu">resp_body_json</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>$operation
 [1] "abs"
@@ -558,76 +594,160 @@ $result
 <li>create, illustrate, and narrate fictional stories<br>
 </li>
 <li>store and retrieve the stories</li>
+<li><a href="https://01983eb1-571e-c412-ea19-65f74e04956d.share.connect.posit.cloud/">App</a></li>
 </ul>
 </section>
 <section id="storytelling-app" class="slide level2">
 <h2>Storytelling App</h2>
-<p><img data-src="assets/images/storytelling.png" class="absolute" style="top: 100px; left: 0px; width: 230px; height: 250px; "></p>
-<p><img data-src="assets/images/frstore.png" class="absolute" style="top: 100px; right: 100px; width: 230px; height: 250px; "></p>
-<p><img data-src="assets/images/storytelling_app.png" class="absolute" style="top: 300px; left: 280px; width: 400px; height: 300px; "></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><img data-src="assets/images/storytelling.png" width="230" height="250"></p>
+<p>Functions for story text, image, and speech generation</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><img data-src="assets/images/frstore.png" width="230" height="250"></p>
+<p>Functions for <code>GET</code>ting and <code>POST</code>ing data to Google Cloud Firestore Database</p>
+</div>
+</div></div>
+<div class="fragment">
+<p>Both packages use <code>httr2</code></p>
+</div>
+</section>
+<section id="generating-content-in-the-storytelling-app" class="slide level2">
+<h2>Generating content in the Storytelling App</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1|2-6|8-9|10-11|13-14|19-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">library</span>(storytelling)</span>
+<span id="cb19-2"><a href=""></a>create_experience <span class="ot">&lt;-</span> <span class="cf">function</span>(user_prompt,</span>
+<span id="cb19-3"><a href=""></a>                              num_paras,</span>
+<span id="cb19-4"><a href=""></a>                              genre,</span>
+<span id="cb19-5"><a href=""></a>                              style,</span>
+<span id="cb19-6"><a href=""></a>                              narrate){</span>
+<span id="cb19-7"><a href=""></a></span>
+<span id="cb19-8"><a href=""></a>  story <span class="ot">&lt;-</span> <span class="fu">generate_story</span>(user_prompt, num_paras, genre)</span>
+<span id="cb19-9"><a href=""></a>  title <span class="ot">&lt;-</span> story<span class="sc">$</span>title</span>
+<span id="cb19-10"><a href=""></a>  image_prompts <span class="ot">&lt;-</span> <span class="fu">generate_image_prompts</span>(story<span class="sc">$</span>story)</span>
+<span id="cb19-11"><a href=""></a>  all_images <span class="ot">&lt;-</span> <span class="fu">generate_images</span>(image_prompts, style)</span>
+<span id="cb19-12"><a href=""></a></span>
+<span id="cb19-13"><a href=""></a>  <span class="cf">if</span> (narrate){</span>
+<span id="cb19-14"><a href=""></a>    audios <span class="ot">&lt;-</span> <span class="fu">generate_audio</span>(story<span class="sc">$</span>story, <span class="at">model =</span> <span class="st">"google"</span>)</span>
+<span id="cb19-15"><a href=""></a>  } <span class="cf">else</span> {</span>
+<span id="cb19-16"><a href=""></a>    audios <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb19-17"><a href=""></a>  }</span>
+<span id="cb19-18"><a href=""></a></span>
+<span id="cb19-19"><a href=""></a>  <span class="fu">list</span>(</span>
+<span id="cb19-20"><a href=""></a>    <span class="st">"story"</span> <span class="ot">=</span> story<span class="sc">$</span>story,</span>
+<span id="cb19-21"><a href=""></a>    <span class="st">"title"</span> <span class="ot">=</span> title,</span>
+<span id="cb19-22"><a href=""></a>    <span class="st">"images"</span> <span class="ot">=</span> all_images,</span>
+<span id="cb19-23"><a href=""></a>    <span class="st">"speech"</span> <span class="ot">=</span> audios</span>
+<span id="cb19-24"><a href=""></a>  )</span>
+<span id="cb19-25"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section></section>
 <section>
 <section id="request-a-large-language-model-llm-for-story-text" class="title-slide slide level1 center">
 <h1>Request a Large Language Model (LLM) for story text</h1>
 
 </section>
-<section id="curl-translate" class="slide level2">
-<h2>curl translate</h2>
+<section id="workers-ai-models-at-cloudflare" class="slide level2">
+<h2>Workers AI Models at Cloudflare</h2>
+<p>Generous usage under free tier</p>
+<p><a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/">Documentation for <code>llama 3.1 8b instruct</code></a></p>
 </section>
-<section id="inputs" class="slide level2">
-<h2>Inputs</h2>
+<section id="curl-request" class="slide level2">
+<h2>cURL request</h2>
+<p>Base URL and endpoint</p>
+<div class="fragment highlightword" data-word="https://api.cloudflare.com/client/v4/accounts/" style="background:yellow;">
+
+</div>
+<div class="fragment highlightword" data-word="ai/run/@cf/meta/llama-3.1-8b-instruct-fast" style="background:yellow;">
+
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource curl number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href=""></a>curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \</span>
+<span id="cb20-2"><a href=""></a>  -X POST \</span>
+<span id="cb20-3"><a href=""></a>  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \</span>
+<span id="cb20-4"><a href=""></a>  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="curl-request-1" class="slide level2">
+<h2>cURL request</h2>
+<p>Authorization</p>
+<div class="fragment highlightword" data-word="$CLOUDFLARE_ACCOUNT_ID" style="background:yellow;">
+
+</div>
+<div class="fragment highlightword" data-word="$CLOUDFLARE_AUTH_TOKEN" style="background:yellow;">
+
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource curl number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a href=""></a>curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \</span>
+<span id="cb21-2"><a href=""></a>  -X POST \</span>
+<span id="cb21-3"><a href=""></a>  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \</span>
+<span id="cb21-4"><a href=""></a>  -d '{ "messages": [{ "role": "system", "content": "You are a friendly assistant" }, { "role": "user", "content": "Why is pizza so good" }]}'</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="curl-request-2" class="slide level2">
+<h2>cURL request</h2>
+<p>Request type (<code>POST</code>) and body</p>
+<div class="fragment highlightword" data-word="POST" style="background:yellow;">
+
+</div>
+<div class="fragment highlightword" data-word="{ 'messages': [{ 'role': 'system', 'content': 'You are a friendly assistant' }, { 'role': 'user', 'content': 'Why is pizza so good' }]}" style="background:yellow;">
+
+</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource curl number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href=""></a>curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \</span>
+<span id="cb22-2"><a href=""></a>  -X POST \</span>
+<span id="cb22-3"><a href=""></a>  -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \</span>
+<span id="cb22-4"><a href=""></a>  -d '{ 'messages': [{ 'role': 'system', 'content': 'You are a friendly assistant' }, { 'role': 'user', 'content': 'Why is pizza so good' }]}'  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="translate-curl-to-httr2-request" class="slide level2">
+<h2>Translate curl to httr2 request</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>user_prompt <span class="ot">&lt;-</span> <span class="st">"Tell me a story about a dragon who baked cookies"</span></span>
-<span id="cb19-2"><a href=""></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"You tell short fictional stories"</span></span>
-<span id="cb19-3"><a href=""></a>max_tokens <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb19-4"><a href=""></a>ACCOUNT_ID <span class="ot">&lt;-</span> <span class="st">"AccountID"</span></span>
-<span id="cb19-5"><a href=""></a>API_KEY <span class="ot">&lt;-</span> <span class="st">"API-key"</span></span>
-<span id="cb19-6"><a href=""></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span></span>
-<span id="cb19-7"><a href=""></a>model <span class="ot">&lt;-</span> <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>httr2<span class="sc">::</span><span class="fu">curl_translate</span>(</span>
+<span id="cb23-2"><a href=""></a>  <span class="st">"curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.1-8b-instruct-fast \</span></span>
+<span id="cb23-3"><a href=""></a><span class="st">  -X POST \</span></span>
+<span id="cb23-4"><a href=""></a><span class="st">  -H 'Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN' \</span></span>
+<span id="cb23-5"><a href=""></a><span class="st">  -d '{</span><span class="sc">\"</span><span class="st">messages</span><span class="sc">\"</span><span class="st">: [{</span><span class="sc">\"</span><span class="st">role</span><span class="sc">\"</span><span class="st">: </span><span class="sc">\"</span><span class="st">system</span><span class="sc">\"</span><span class="st">, </span><span class="sc">\"</span><span class="st">content</span><span class="sc">\"</span><span class="st">: </span><span class="sc">\"</span><span class="st">You are a friendly assistant</span><span class="sc">\"</span><span class="st">}, {</span><span class="sc">\"</span><span class="st">role</span><span class="sc">\"</span><span class="st">: </span><span class="sc">\"</span><span class="st">user</span><span class="sc">\"</span><span class="st">, </span><span class="sc">\"</span><span class="st">content</span><span class="sc">\"</span><span class="st">: </span><span class="sc">\"</span><span class="st">Why is pizza so good</span><span class="sc">\"</span><span class="st">}]}'"</span></span>
+<span id="cb23-6"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>request("https://api.cloudflare.com/client/v4/accounts/%24CLOUDFLARE_ACCOUNT_ID/ai/run/%40cf/meta/llama-3.1-8b-instruct-fast") |&gt;
+  req_method("POST") |&gt;
+  req_headers(
+    Authorization = "Bearer $CLOUDFLARE_AUTH_TOKEN",
+  ) |&gt;
+  req_body_raw('{"messages": [{"role": "system", "content": "You are a friendly assistant"}, {"role": "user", "content": "Why is pizza so good"}]}', "application/x-www-form-urlencoded") |&gt;
+  req_perform()</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>We can do better!</p>
 </div>
 </section>
 <section id="start-creating-the-request" class="slide level2">
 <h2>Start creating the request</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>user_prompt <span class="ot">&lt;-</span> <span class="st">"Tell me a story about a dragon who baked cookies"</span></span>
-<span id="cb20-2"><a href=""></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"You tell short fictional stories"</span></span>
-<span id="cb20-3"><a href=""></a>max_tokens <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb20-4"><a href=""></a>ACCOUNT_ID <span class="ot">&lt;-</span> <span class="st">"AccountID"</span></span>
-<span id="cb20-5"><a href=""></a>API_KEY <span class="ot">&lt;-</span> <span class="st">"API-key"</span></span>
-<span id="cb20-6"><a href=""></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span></span>
-<span id="cb20-7"><a href=""></a>model <span class="ot">&lt;-</span> <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span></span>
-<span id="cb20-8"><a href=""></a></span>
-<span id="cb20-9"><a href=""></a><span class="fu">library</span>(httr2)</span>
-<span id="cb20-10"><a href=""></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
-<span id="cb20-11"><a href=""></a>  <span class="fu">req_url_path_append</span>(ACCOUNT_ID, <span class="st">"ai/run"</span>, model)</span>
-<span id="cb20-12"><a href=""></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<span id="cb25-2"><a href=""></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"AccountID"</span>, <span class="st">"ai/run"</span>, <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span>)</span>
+<span id="cb25-4"><a href=""></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;httr2_request&gt;
 GET https://api.cloudflare.com/client/v4/accounts/AccountID/ai/run/%40cf/meta/llama-3.1-8b-instruct-fast
 Body: empty</code></pre>
 </div>
-</div></div>
+</div>
 </section>
-<section id="authenticate" class="slide level2">
-<h2>Authenticate</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>user_prompt <span class="ot">&lt;-</span> <span class="st">"Tell me a story about a dragon who baked cookies"</span></span>
-<span id="cb22-2"><a href=""></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"You tell short fictional stories"</span></span>
-<span id="cb22-3"><a href=""></a>max_tokens <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb22-4"><a href=""></a>ACCOUNT_ID <span class="ot">&lt;-</span> <span class="st">"AccountID"</span></span>
-<span id="cb22-5"><a href=""></a>API_KEY <span class="ot">&lt;-</span> <span class="st">"API-key"</span></span>
-<span id="cb22-6"><a href=""></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span></span>
-<span id="cb22-7"><a href=""></a>model <span class="ot">&lt;-</span> <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span></span>
-<span id="cb22-8"><a href=""></a></span>
-<span id="cb22-9"><a href=""></a><span class="fu">library</span>(httr2)</span>
-<span id="cb22-10"><a href=""></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
-<span id="cb22-11"><a href=""></a>  <span class="fu">req_url_path_append</span>(ACCOUNT_ID, <span class="st">"ai/run"</span>, model) <span class="sc">|&gt;</span> </span>
-<span id="cb22-12"><a href=""></a>  <span class="fu">req_auth_bearer_token</span>(API_KEY)</span>
-<span id="cb22-13"><a href=""></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+<section id="authorize" class="slide level2">
+<h2>Authorize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" data-code-line-numbers="1-3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<span id="cb27-2"><a href=""></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"AccountID"</span>, <span class="st">"ai/run"</span>, <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb27-4"><a href=""></a>  <span class="fu">req_auth_bearer_token</span>(<span class="st">"API-key"</span>)</span>
+<span id="cb27-5"><a href=""></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;httr2_request&gt;
 GET https://api.cloudflare.com/client/v4/accounts/AccountID/ai/run/%40cf/meta/llama-3.1-8b-instruct-fast
@@ -635,40 +755,32 @@ Headers:
 * Authorization: &lt;REDACTED&gt;
 Body: empty</code></pre>
 </div>
-</div></div>
+</div>
 </section>
 <section id="provide-request-body" class="slide level2">
 <h2>Provide request body</h2>
-<div class="cell columns column-output-location">
-<div class="column">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>user_prompt <span class="ot">&lt;-</span> <span class="st">"Tell me a story about a dragon who baked cookies"</span></span>
-<span id="cb24-2"><a href=""></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"You tell short fictional stories"</span></span>
-<span id="cb24-3"><a href=""></a>max_tokens <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb24-4"><a href=""></a>ACCOUNT_ID <span class="ot">&lt;-</span> <span class="st">"AccountID"</span></span>
-<span id="cb24-5"><a href=""></a>API_KEY <span class="ot">&lt;-</span> <span class="st">"API-key"</span></span>
-<span id="cb24-6"><a href=""></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span></span>
-<span id="cb24-7"><a href=""></a>model <span class="ot">&lt;-</span> <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span></span>
-<span id="cb24-8"><a href=""></a></span>
-<span id="cb24-9"><a href=""></a><span class="fu">library</span>(httr2)</span>
-<span id="cb24-10"><a href=""></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
-<span id="cb24-11"><a href=""></a>  <span class="fu">req_url_path_append</span>(ACCOUNT_ID, <span class="st">"ai/run"</span>, model) <span class="sc">|&gt;</span> </span>
-<span id="cb24-12"><a href=""></a>  <span class="fu">req_auth_bearer_token</span>(API_KEY) <span class="sc">|&gt;</span> </span>
-<span id="cb24-13"><a href=""></a>  <span class="fu">req_body_json</span>(</span>
-<span id="cb24-14"><a href=""></a>    <span class="fu">list</span>(</span>
-<span id="cb24-15"><a href=""></a>      <span class="at">max_tokens =</span> max_tokens,</span>
-<span id="cb24-16"><a href=""></a>      <span class="at">messages =</span> <span class="fu">list</span>(</span>
-<span id="cb24-17"><a href=""></a>        <span class="fu">list</span>(</span>
-<span id="cb24-18"><a href=""></a>          <span class="at">role =</span> <span class="st">"system"</span>,</span>
-<span id="cb24-19"><a href=""></a>          <span class="at">content =</span> system_prompt</span>
-<span id="cb24-20"><a href=""></a>        ),</span>
-<span id="cb24-21"><a href=""></a>        <span class="fu">list</span>(</span>
-<span id="cb24-22"><a href=""></a>          <span class="at">role =</span> <span class="st">"user"</span>,</span>
-<span id="cb24-23"><a href=""></a>          <span class="at">content =</span> user_prompt</span>
-<span id="cb24-24"><a href=""></a>        )</span>
-<span id="cb24-25"><a href=""></a>      ))</span>
-<span id="cb24-26"><a href=""></a>  )</span>
-<span id="cb24-27"><a href=""></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" data-code-line-numbers="4|5-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<span id="cb29-2"><a href=""></a>req <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"AccountID"</span>, <span class="st">"ai/run"</span>, <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-4"><a href=""></a>  <span class="fu">req_auth_bearer_token</span>(<span class="st">"API-key"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb29-5"><a href=""></a>  <span class="fu">req_body_json</span>(</span>
+<span id="cb29-6"><a href=""></a>    <span class="fu">list</span>(</span>
+<span id="cb29-7"><a href=""></a>      <span class="at">max_tokens =</span> <span class="dv">1000</span>,</span>
+<span id="cb29-8"><a href=""></a>      <span class="at">messages =</span> <span class="fu">list</span>(</span>
+<span id="cb29-9"><a href=""></a>        <span class="fu">list</span>(</span>
+<span id="cb29-10"><a href=""></a>          <span class="at">role =</span> <span class="st">"system"</span>,</span>
+<span id="cb29-11"><a href=""></a>          <span class="at">content =</span> <span class="st">"You tell short fictional stories"</span></span>
+<span id="cb29-12"><a href=""></a>        ),</span>
+<span id="cb29-13"><a href=""></a>        <span class="fu">list</span>(</span>
+<span id="cb29-14"><a href=""></a>          <span class="at">role =</span> <span class="st">"user"</span>,</span>
+<span id="cb29-15"><a href=""></a>          <span class="at">content =</span> <span class="st">"Tell me a story about a dragon who baked cookies"</span></span>
+<span id="cb29-16"><a href=""></a>        )</span>
+<span id="cb29-17"><a href=""></a>      ))</span>
+<span id="cb29-18"><a href=""></a>  )</span>
+<span id="cb29-19"><a href=""></a>req</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;httr2_request&gt;
 POST https://api.cloudflare.com/client/v4/accounts/AccountID/ai/run/%40cf/meta/llama-3.1-8b-instruct-fast
@@ -676,36 +788,37 @@ Headers:
 * Authorization: &lt;REDACTED&gt;
 Body: JSON data</code></pre>
 </div>
-</div></div>
+</div>
 </section>
 <section id="perform-the-request-and-get-the-response" class="slide level2">
 <h2>Perform the request and get the response</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
-<span id="cb26-2"><a href=""></a>resp <span class="ot">&lt;-</span> <span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(ACCOUNT_ID, <span class="st">"ai/run"</span>, model) <span class="sc">|&gt;</span> </span>
-<span id="cb26-4"><a href=""></a>  <span class="fu">req_auth_bearer_token</span>(API_KEY) <span class="sc">|&gt;</span> </span>
-<span id="cb26-5"><a href=""></a>  <span class="fu">req_body_json</span>(</span>
-<span id="cb26-6"><a href=""></a>    <span class="fu">list</span>(</span>
-<span id="cb26-7"><a href=""></a>      <span class="at">max_tokens =</span> max_tokens,</span>
-<span id="cb26-8"><a href=""></a>      <span class="at">messages =</span> <span class="fu">list</span>(</span>
-<span id="cb26-9"><a href=""></a>        <span class="fu">list</span>(</span>
-<span id="cb26-10"><a href=""></a>          <span class="at">role =</span> <span class="st">"system"</span>,</span>
-<span id="cb26-11"><a href=""></a>          <span class="at">content =</span> system_prompt</span>
-<span id="cb26-12"><a href=""></a>        ),</span>
-<span id="cb26-13"><a href=""></a>        <span class="fu">list</span>(</span>
-<span id="cb26-14"><a href=""></a>          <span class="at">role =</span> <span class="st">"user"</span>,</span>
-<span id="cb26-15"><a href=""></a>          <span class="at">content =</span> user_prompt</span>
-<span id="cb26-16"><a href=""></a>        )</span>
-<span id="cb26-17"><a href=""></a>      ))</span>
-<span id="cb26-18"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb26-19"><a href=""></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-20"><a href=""></a>  <span class="fu">resp_body_json</span>()</span>
-<span id="cb26-21"><a href=""></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31" data-code-line-numbers="4-18|19-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">library</span>(httr2)</span>
+<span id="cb31-2"><a href=""></a>resp <span class="ot">&lt;-</span> <span class="fu">request</span>(<span class="st">"https://api.cloudflare.com/client/v4/accounts/"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href=""></a>  <span class="fu">req_url_path_append</span>(<span class="st">"AccountID"</span>, <span class="st">"ai/run"</span>, <span class="st">"@cf/meta/llama-3.1-8b-instruct-fast"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-4"><a href=""></a>  <span class="fu">req_auth_bearer_token</span>(<span class="st">"API-key"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-5"><a href=""></a>  <span class="fu">req_body_json</span>(</span>
+<span id="cb31-6"><a href=""></a>    <span class="fu">list</span>(</span>
+<span id="cb31-7"><a href=""></a>      <span class="at">max_tokens =</span> <span class="dv">1000</span>,</span>
+<span id="cb31-8"><a href=""></a>      <span class="at">messages =</span> <span class="fu">list</span>(</span>
+<span id="cb31-9"><a href=""></a>        <span class="fu">list</span>(</span>
+<span id="cb31-10"><a href=""></a>          <span class="at">role =</span> <span class="st">"system"</span>,</span>
+<span id="cb31-11"><a href=""></a>          <span class="at">content =</span> <span class="st">"You tell short fictional stories"</span></span>
+<span id="cb31-12"><a href=""></a>        ),</span>
+<span id="cb31-13"><a href=""></a>        <span class="fu">list</span>(</span>
+<span id="cb31-14"><a href=""></a>          <span class="at">role =</span> <span class="st">"user"</span>,</span>
+<span id="cb31-15"><a href=""></a>          <span class="at">content =</span> <span class="st">"Tell me a story about a dragon who baked cookies"</span></span>
+<span id="cb31-16"><a href=""></a>        )</span>
+<span id="cb31-17"><a href=""></a>      ))</span>
+<span id="cb31-18"><a href=""></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb31-19"><a href=""></a>  <span class="fu">req_perform</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-20"><a href=""></a>  <span class="fu">resp_body_json</span>()</span>
+<span id="cb31-21"><a href=""></a>resp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
+<div class="fragment">
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>$result
@@ -734,22 +847,23 @@ $messages
 list()</code></pre>
 </div>
 </div>
+</div>
 </div></div>
 </section>
 <section id="process-the-response" class="slide level2">
 <h2>Process the response</h2>
 <div class="cell columns column-output-location">
 <div class="column">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="cf">if</span> (<span class="fu">isTRUE</span>(resp<span class="sc">$</span>success)){</span>
-<span id="cb28-2"><a href=""></a>  full_text <span class="ot">&lt;-</span> resp<span class="sc">$</span>result<span class="sc">$</span>response </span>
-<span id="cb28-3"><a href=""></a>  cleaned_text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">""</span>, full_text)</span>
-<span id="cb28-4"><a href=""></a>  temp_text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">b(Dr|Mr|Mrs|Ms|St|Jr|Sr|vs|etc|U</span><span class="sc">\\</span><span class="st">.S)</span><span class="sc">\\</span><span class="st">."</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1&lt;PERIOD&gt;"</span>, cleaned_text)</span>
-<span id="cb28-5"><a href=""></a>  split_text <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(temp_text, <span class="st">"(?&lt;=</span><span class="sc">\\</span><span class="st">.)</span><span class="sc">\\</span><span class="st">s+(?=[A-Z])"</span>, <span class="at">perl =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb28-6"><a href=""></a>  split_text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"&lt;PERIOD&gt;"</span>, <span class="st">"."</span>, split_text)</span>
-<span id="cb28-7"><a href=""></a>} <span class="cf">else</span> {</span>
-<span id="cb28-8"><a href=""></a>  split_text <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb28-9"><a href=""></a>}</span>
-<span id="cb28-10"><a href=""></a>split_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="cf">if</span> (<span class="fu">isTRUE</span>(resp<span class="sc">$</span>success)){</span>
+<span id="cb33-2"><a href=""></a>  full_text <span class="ot">&lt;-</span> resp<span class="sc">$</span>result<span class="sc">$</span>response </span>
+<span id="cb33-3"><a href=""></a>  cleaned_text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, <span class="st">""</span>, full_text)</span>
+<span id="cb33-4"><a href=""></a>  temp_text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">b(Dr|Mr|Mrs|Ms|St|Jr|Sr|vs|etc|U</span><span class="sc">\\</span><span class="st">.S)</span><span class="sc">\\</span><span class="st">."</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1&lt;PERIOD&gt;"</span>, cleaned_text)</span>
+<span id="cb33-5"><a href=""></a>  split_text <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">strsplit</span>(temp_text, <span class="st">"(?&lt;=</span><span class="sc">\\</span><span class="st">.)</span><span class="sc">\\</span><span class="st">s+(?=[A-Z])"</span>, <span class="at">perl =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb33-6"><a href=""></a>  split_text <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"&lt;PERIOD&gt;"</span>, <span class="st">"."</span>, split_text)</span>
+<span id="cb33-7"><a href=""></a>} <span class="cf">else</span> {</span>
+<span id="cb33-8"><a href=""></a>  split_text <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb33-9"><a href=""></a>}</span>
+<span id="cb33-10"><a href=""></a>split_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Here's a tale for you:In a land of rolling hills and sparkling lakes, there lived a dragon named Ember."                                                                                                                                                                                                                
@@ -763,39 +877,211 @@ list()</code></pre>
 [9] "And Ember, the dragon baker, was happy to oblige, his heart filled with joy and his belly full of cookies."                                                                                                                                                                                                             </code></pre>
 </div>
 </div></div>
+</section></section>
+<section>
+<section id="ellmer-makes-the-process-smooth" class="title-slide slide level1 center">
+<h1><code>ellmer</code> makes the process smooth!</h1>
+<ul>
+<li>Try different models<br>
+</li>
+<li>Get structured output</li>
+</ul>
 </section>
-<section id="resources" class="slide level2">
-<h2>Resources:</h2>
+<section id="generate-story-text-with-ellmer" class="slide level2">
+<h2>Generate story text with ellmer</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>generate_story <span class="ot">&lt;-</span> <span class="cf">function</span>(user_prompt,</span>
+<span id="cb35-2"><a href=""></a>                           <span class="at">num_paras =</span> <span class="dv">5</span>,</span>
+<span id="cb35-3"><a href=""></a>                           <span class="at">genre =</span> <span class="fu">c</span>(<span class="st">"&lt;vector of genres&gt;"</span>),</span>
+<span id="cb35-4"><a href=""></a>                           <span class="at">chat_fn =</span> ellmer<span class="sc">::</span>chat_google_gemini,</span>
+<span id="cb35-5"><a href=""></a>                           <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
+<span id="cb35-6"><a href=""></a>                           ...){</span>
+<span id="cb35-7"><a href=""></a>  system_prompt <span class="ot">&lt;-</span> <span class="fu">generate_story_system_prompt</span>(</span>
+<span id="cb35-8"><a href=""></a>    <span class="at">genre =</span> genre,</span>
+<span id="cb35-9"><a href=""></a>    <span class="at">num_paras =</span> num_paras</span>
+<span id="cb35-10"><a href=""></a>  )</span>
+<span id="cb35-11"><a href=""></a></span>
+<span id="cb35-12"><a href=""></a>  client <span class="ot">&lt;-</span> <span class="fu">make_chat</span>(</span>
+<span id="cb35-13"><a href=""></a>    chat_fn,</span>
+<span id="cb35-14"><a href=""></a>    <span class="at">system_prompt =</span> system_prompt,</span>
+<span id="cb35-15"><a href=""></a>    <span class="at">model =</span> model,</span>
+<span id="cb35-16"><a href=""></a>    ...</span>
+<span id="cb35-17"><a href=""></a>  )</span>
+<span id="cb35-18"><a href=""></a></span>
+<span id="cb35-19"><a href=""></a>  res <span class="ot">&lt;-</span> client<span class="sc">$</span><span class="fu">chat_structured</span>(</span>
+<span id="cb35-20"><a href=""></a>    user_prompt,</span>
+<span id="cb35-21"><a href=""></a>    <span class="at">type =</span> ellmer<span class="sc">::</span><span class="fu">type_object</span>(</span>
+<span id="cb35-22"><a href=""></a>        <span class="at">title =</span> ellmer<span class="sc">::</span><span class="fu">type_string</span>(<span class="st">"Title of the story. One sentence max."</span>),</span>
+<span id="cb35-23"><a href=""></a>        <span class="at">story =</span> ellmer<span class="sc">::</span><span class="fu">type_array</span>(</span>
+<span id="cb35-24"><a href=""></a>        <span class="fu">paste0</span>(<span class="st">"Return exactly "</span>,  num_paras,  <span class="st">" paragraphs, as an array. Each array element is a paragraph of the story. Do not return explanations or any text outside the array. Each paragraph must be self-contained, i.e., do not use blank lines or newlines to separate paragraphs inside elements."</span>),</span>
+<span id="cb35-25"><a href=""></a>        <span class="at">items =</span> ellmer<span class="sc">::</span><span class="fu">type_string</span>()</span>
+<span id="cb35-26"><a href=""></a>      )</span>
+<span id="cb35-27"><a href=""></a>    )</span>
+<span id="cb35-28"><a href=""></a>  )</span>
+<span id="cb35-29"><a href=""></a></span>
+<span id="cb35-30"><a href=""></a>  res</span>
+<span id="cb35-31"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generate-multiple-images-in-parallel" class="slide level2">
+<h2>Generate multiple images in parallel</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>generate_images <span class="ot">&lt;-</span> <span class="cf">function</span>(image_prompts,</span>
+<span id="cb36-2"><a href=""></a>                            ...){</span>
+<span id="cb36-3"><a href=""></a>  reqs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb36-4"><a href=""></a>    image_prompts,</span>
+<span id="cb36-5"><a href=""></a>    <span class="cf">function</span>(x){</span>
+<span id="cb36-6"><a href=""></a>      <span class="fu">req_single_image</span>(x, image_prompts<span class="sc">$</span>negative_prompt, ...)</span>
+<span id="cb36-7"><a href=""></a>    }</span>
+<span id="cb36-8"><a href=""></a>  )</span>
+<span id="cb36-9"><a href=""></a>  resps <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform_parallel</span>(reqs, <span class="at">on_error =</span> <span class="st">"continue"</span>)</span>
+<span id="cb36-10"><a href=""></a>  </span>
+<span id="cb36-11"><a href=""></a>  <span class="co"># All images</span></span>
+<span id="cb36-12"><a href=""></a>  <span class="fu">lapply</span>(resps, get_raw_image)</span>
+<span id="cb36-13"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="storing-the-story-on-the-firestore-database" class="title-slide slide level1 center">
+<h1>Storing the story on the Firestore database</h1>
+
+</section>
+<section id="creating-a-request" class="slide level2">
+<h2>Creating a request</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37" data-code-line-numbers="1-4|5|6-11|12-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>frstore_req <span class="ot">&lt;-</span> <span class="cf">function</span>(document_path, </span>
+<span id="cb37-2"><a href=""></a>                        id_token, </span>
+<span id="cb37-3"><a href=""></a>                        <span class="at">project_id =</span> <span class="st">"&lt;project-id&gt;"</span>, </span>
+<span id="cb37-4"><a href=""></a>                        <span class="at">base_url =</span> <span class="st">"https://firestore.googleapis.com/v1beta1"</span>){</span>
+<span id="cb37-5"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
+<span id="cb37-6"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_path_append</span>(</span>
+<span id="cb37-7"><a href=""></a>      <span class="st">"projects"</span>,</span>
+<span id="cb37-8"><a href=""></a>      project_id,</span>
+<span id="cb37-9"><a href=""></a>      <span class="st">"databases/(default)/documents"</span>,</span>
+<span id="cb37-10"><a href=""></a>      document_path</span>
+<span id="cb37-11"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb37-12"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_headers</span>(</span>
+<span id="cb37-13"><a href=""></a>      <span class="st">"Content-Type"</span> <span class="ot">=</span> <span class="st">"application/json"</span>,</span>
+<span id="cb37-14"><a href=""></a>      <span class="st">"Authorization"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, id_token)</span>
+<span id="cb37-15"><a href=""></a>    )</span>
+<span id="cb37-16"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="handling-errors" class="slide level2">
+<h2>Handling errors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38" data-code-line-numbers="|1|2|3-12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>frstore_error_handler <span class="ot">&lt;-</span> <span class="cf">function</span>(e) {</span>
+<span id="cb38-2"><a href=""></a>  resp_err <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">last_response</span>()</span>
+<span id="cb38-3"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(resp_err)) {</span>
+<span id="cb38-4"><a href=""></a>    resp_err <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(resp_err)<span class="sc">$</span>error</span>
+<span id="cb38-5"><a href=""></a>    err_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb38-6"><a href=""></a>      <span class="at">error =</span> <span class="fu">list</span>(</span>
+<span id="cb38-7"><a href=""></a>        <span class="at">code =</span> resp_err<span class="sc">$</span>code,</span>
+<span id="cb38-8"><a href=""></a>        <span class="at">message =</span> resp_err<span class="sc">$</span>message</span>
+<span id="cb38-9"><a href=""></a>      )</span>
+<span id="cb38-10"><a href=""></a>    )</span>
+<span id="cb38-11"><a href=""></a>    <span class="fu">return</span>(err_list)</span>
+<span id="cb38-12"><a href=""></a>  }</span>
+<span id="cb38-13"><a href=""></a>  <span class="fu">stop</span>(<span class="fu">conditionMessage</span>(e), <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb38-14"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-a-document-on-firestore-database-with-story-data" class="slide level2">
+<h2>Creating a document on Firestore database with story data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39" data-code-line-numbers="|1|15-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>frstore_create_document <span class="ot">&lt;-</span> <span class="cf">function</span>(document_path, id_token, <span class="at">data =</span> <span class="cn">NULL</span>){</span>
+<span id="cb39-2"><a href=""></a>  partial_path <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"/[^/]*$"</span>, <span class="st">""</span>, document_path)</span>
+<span id="cb39-3"><a href=""></a>  document <span class="ot">&lt;-</span> <span class="fu">tail</span>(<span class="fu">strsplit</span>(document_path, <span class="st">"/"</span>)[[<span class="dv">1</span>]], <span class="dv">1</span>)</span>
+<span id="cb39-4"><a href=""></a></span>
+<span id="cb39-5"><a href=""></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(data)){</span>
+<span id="cb39-6"><a href=""></a>    <span class="fu">tryCatch</span>(</span>
+<span id="cb39-7"><a href=""></a>      <span class="at">expr =</span> <span class="fu">frstore_req</span>(partial_path, id_token) <span class="sc">|&gt;</span></span>
+<span id="cb39-8"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">documentId =</span> document) <span class="sc">|&gt;</span></span>
+<span id="cb39-9"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_body_raw</span>(<span class="st">"{}"</span>, <span class="st">"application/json"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb39-10"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_method</span>(<span class="st">"POST"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb39-11"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>(),</span>
+<span id="cb39-12"><a href=""></a>      <span class="at">error =</span> frstore_error_handler</span>
+<span id="cb39-13"><a href=""></a>    )</span>
+<span id="cb39-14"><a href=""></a>  } <span class="cf">else</span> {</span>
+<span id="cb39-15"><a href=""></a>    <span class="fu">tryCatch</span>(</span>
+<span id="cb39-16"><a href=""></a>      <span class="at">expr =</span> <span class="fu">frstore_req</span>(partial_path, id_token) <span class="sc">|&gt;</span></span>
+<span id="cb39-17"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">documentId =</span> document) <span class="sc">|&gt;</span></span>
+<span id="cb39-18"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_body_json</span>(<span class="at">data =</span> data) <span class="sc">|&gt;</span></span>
+<span id="cb39-19"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>(),</span>
+<span id="cb39-20"><a href=""></a>      <span class="at">error =</span> frstore_error_handler</span>
+<span id="cb39-21"><a href=""></a>    )</span>
+<span id="cb39-22"><a href=""></a>  }</span>
+<span id="cb39-23"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="storing-the-story-on-the-firestore-database-1" class="slide level2">
+<h2>Storing the story on the Firestore database</h2>
+<p>Save to database</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="|1-2|3-5|6-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="co"># Upload images to imgur service</span></span>
+<span id="cb40-2"><a href=""></a>img_urls <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(all_images, upload_image)</span>
+<span id="cb40-3"><a href=""></a><span class="co"># Store on firestore</span></span>
+<span id="cb40-4"><a href=""></a><span class="fu">frstore_create_document</span>(</span>
+<span id="cb40-5"><a href=""></a>  <span class="fu">paste0</span>(<span class="st">"story/"</span>, <span class="fu">random_id</span>()),</span>
+<span id="cb40-6"><a href=""></a>  id_token,</span>
+<span id="cb40-7"><a href=""></a>  <span class="fu">list</span>(</span>
+<span id="cb40-8"><a href=""></a>    <span class="at">fields =</span> <span class="fu">list</span>(</span>
+<span id="cb40-9"><a href=""></a>      <span class="at">genre =</span> <span class="fu">list</span>(<span class="at">stringValue =</span> genre),</span>
+<span id="cb40-10"><a href=""></a>      <span class="at">title =</span> <span class="fu">list</span>(<span class="at">stringValue =</span> title),</span>
+<span id="cb40-11"><a href=""></a>      <span class="at">story =</span> <span class="fu">list</span>(</span>
+<span id="cb40-12"><a href=""></a>        <span class="at">arrayValue =</span> <span class="fu">list</span>(</span>
+<span id="cb40-13"><a href=""></a>          <span class="at">values =</span> <span class="fu">list</span>(</span>
+<span id="cb40-14"><a href=""></a>            <span class="fu">lapply</span>(story, <span class="cf">function</span>(x) <span class="fu">list</span>(<span class="at">stringValue =</span> x))</span>
+<span id="cb40-15"><a href=""></a>          )</span>
+<span id="cb40-16"><a href=""></a>        )</span>
+<span id="cb40-17"><a href=""></a>      ),</span>
+<span id="cb40-18"><a href=""></a>      <span class="at">img_urls =</span> <span class="fu">list</span>(</span>
+<span id="cb40-19"><a href=""></a>        <span class="at">arrayValue =</span> <span class="fu">list</span>(</span>
+<span id="cb40-20"><a href=""></a>          <span class="at">values =</span> <span class="fu">list</span>(</span>
+<span id="cb40-21"><a href=""></a>            <span class="fu">lapply</span>(img_urls, <span class="cf">function</span>(x) <span class="fu">list</span>(<span class="at">stringValue =</span> x))</span>
+<span id="cb40-22"><a href=""></a>          )</span>
+<span id="cb40-23"><a href=""></a>        )</span>
+<span id="cb40-24"><a href=""></a>      )</span>
+<span id="cb40-25"><a href=""></a>    )</span>
+<span id="cb40-26"><a href=""></a>  )</span>
+<span id="cb40-27"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="assets/images/firestore.PNG" class="r-stretch"></section>
+<section id="httr2-goodies" class="slide level2">
+<h2><code>httr2</code> goodies</h2>
+<ul>
+<li><code>req_error()</code><br>
+</li>
+<li><code>req_cache()</code><br>
+</li>
+<li><code>req_throttle()</code><br>
+</li>
+<li><code>resp_body_html()</code><br>
+</li>
+<li>Many more</li>
+</ul>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions?</h2>
+<ul>
+<li><a href="https://github.com/durraniu/storytelling">storytelling</a><br>
+</li>
+<li><a href="https://github.com/durraniu/storytelling_app">App source</a><br>
+</li>
+<li><a href="https://github.com/Presage-Group/frstore">frstore</a></li>
+</ul>
+
+<img data-src="assets/images/qr-code.png" class="r-stretch quarto-figure-center"><p class="caption">Check out the app</p></section>
+<section id="references" class="slide level2">
+<h2>References</h2>
 <ul>
 <li><p><a href="https://www.youtube.com/watch?v=hmtE4QGIOuk">How to Get Data From APIs with R &amp; {httr2} | Ultimate Step-By-Step Tutorial</a></p></li>
-<li><p>purrr::pluck can be used to get elements from a nested list</p></li>
 <li><p><a href="https://cct-datascience.quarto.pub/demystifying-apis-slides/#/title-slide">Demystifying APIs for Researchers</a></p></li>
-<li><p>api_slide.png<br>
-</p></li>
-<li><p>structure of an api request<br>
-</p></li>
-<li><p>building an api request:<br>
-</p></li>
-</ul>
-<ol type="1">
-<li>create a request<br>
-</li>
-<li>perform the request<br>
-</li>
-<li>get the results</li>
-</ol>
-<ul>
-<li><a href="https://laderast.github.io/intro_apis_ukraine/#/title-slide">A gRadual intRoduction to Web APIs and JSON</a></li>
-</ul>
-<blockquote>
-<p>A web API is a programmatic way to interact with a webservice that allows us to automate the retrieval of data.</p>
-</blockquote>
-<blockquote>
-<p>Endpoints are ways to communicate with the API</p>
-</blockquote>
-<ul>
-<li>JSON = JavaScript Object Notation</li>
-<li>JSON translation: https://laderast.github.io/intro_apis_ukraine/#/json-versus-r-lists</li>
+<li><p><a href="https://laderast.github.io/intro_apis_ukraine/#/title-slide">A gRadual intRoduction to Web APIs and JSON</a></p></li>
 </ul>
 
 </section></section>
@@ -813,6 +1099,7 @@ list()</code></pre>
   <script src="slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="slides_files/libs/revealjs/plugin/reveal-highlightword/highlightword.js"></script>
   <script src="slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -855,7 +1142,7 @@ list()</code></pre>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -957,17 +1244,17 @@ list()</code></pre>
         hideCursorTime: 5000,
 
         // Opens links in an iframe preview overlay
-        previewLinks: false,
+        previewLinks: true,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
+        backgroundTransition: 'none',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,
@@ -980,7 +1267,7 @@ list()</code></pre>
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1800,
+        width: 1600,
 
         height: 700,
 
@@ -1005,7 +1292,7 @@ list()</code></pre>
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealHighlightword, QuartoSupport,
 
           RevealMath,
           RevealNotes,
