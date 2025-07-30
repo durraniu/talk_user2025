@@ -185,7 +185,9 @@
       margin-right: 0; 
     }
   </style>
-  <script src="slides_files/libs/quarto-diagram/mermaid-postprocess-shim.js"></script>
+  <script src="slides_files/libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="slides_files/libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="slides_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -199,16 +201,6 @@
 <p><span style="font-size:0.75em;">Getting data from websites, databases, and LLMs</span></p>
 <p><span style="font-size:0.65em;">Umair Durrani (Data Scientist at Presage Group)</span></p>
 </div>
-</section>
-<section id="were-going-to-discuss" class="slide level2">
-<h2>We’re going to discuss …</h2>
-<ol type="1">
-<li>What is a Web API?<br>
-</li>
-<li>Simple example<br>
-</li>
-<li>Advanced example: Communicating with LLMs and storing data</li>
-</ol>
 </section>
 <section>
 <section id="a-web-api-is-like-a-function-that-exchanges-data-with-the-internet" class="title-slide slide level1 center">
@@ -240,47 +232,15 @@
 </section>
 <section id="example-absolute-value-function" class="slide level2">
 <h2>Example: Absolute value function</h2>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-reveal="true" data-fig-width="8.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 505.171875 70" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="816" id="mermaid-figure-1" height="480">
-<style>#mermaid-figure-1{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-figure-1 .error-icon{fill:#552222;}#mermaid-figure-1 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-1 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-1 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-1 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-1 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-1 .marker.cross{stroke:#333333;}#mermaid-figure-1 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-1 p{margin:0;}#mermaid-figure-1 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-figure-1 .cluster-label text{fill:#333;}#mermaid-figure-1 .cluster-label span{color:#333;}#mermaid-figure-1 .cluster-label span p{background-color:transparent;}#mermaid-figure-1 .label text,#mermaid-figure-1 span{fill:#333;color:#333;}#mermaid-figure-1 .node rect,#mermaid-figure-1 .node circle,#mermaid-figure-1 .node ellipse,#mermaid-figure-1 .node polygon,#mermaid-figure-1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-1 .rough-node .label text,#mermaid-figure-1 .node .label text{text-anchor:middle;}#mermaid-figure-1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-1 .node .label{text-align:center;}#mermaid-figure-1 .node.clickable{cursor:pointer;}#mermaid-figure-1 .arrowheadPath{fill:#333333;}#mermaid-figure-1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-1 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-1 .cluster text{fill:#333;}#mermaid-figure-1 .cluster span{color:#333;}#mermaid-figure-1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-1 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814740791_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814740791_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814740791_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1753814740791_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M138.547,35L142.714,35C146.88,35,155.214,35,161.464,35C167.714,35,171.88,35,175.38,35C178.88,35,181.714,35,183.13,35L184.547,35"></path><path marker-end="url(#mermaid-1753814740791_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M309.828,35L313.995,35C318.161,35,326.495,35,332.745,35C338.995,35,343.161,35,346.661,35C350.161,35,352.995,35,354.411,35L355.828,35"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
-<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="edgeLabel"></span>
-</div>
-</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
-<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="edgeLabel"></span>
-</div>
-</foreignobject></g></g></g><g class="nodes"><g transform="translate(73.2734375, 35)" id="flowchart-A-0" class="node default"><rect height="54" width="130.546875" y="-27" x="-65.2734375" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(-35.2734375, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="70.546875">
-<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="nodeLabel">
-<p>
-Input: -10
-</p>
-</span>
-</div>
-</foreignobject></g></g><g transform="translate(249.1875, 35)" id="flowchart-B-1" class="node default"><rect height="39" width="121.28125" y="-19.5" x="-60.640625" ry="19.5" rx="19.5" style="" class="basic label-container"></rect><g transform="translate(-48.265625, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="96.53125">
-<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="nodeLabel">
-<p>
-Function: abs
-</p>
-</span>
-</div>
-</foreignobject></g></g><g transform="translate(428.5, 35)" id="flowchart-C-3" class="node default"><rect height="54" width="137.34375" y="-27" x="-68.671875" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(-38.671875, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="77.34375">
-<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="nodeLabel">
-<p>
-Output: 10
-</p>
-</span>
-</div>
-</foreignobject></g></g></g></g></g>
-</svg>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Input: -10] --&gt; B([Function: abs])
+    B --&gt; C[Output: 10]
+</pre>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -300,47 +260,17 @@ Output: 10
 </section>
 <section id="example-absolute-value-with-a-web-api" class="slide level2">
 <h2>Example: Absolute value with a Web API</h2>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-reveal="true" data-fig-width="8.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
-<svg aria-roledescription="flowchart-v2" role="graphics-document document" viewbox="0 0 506.515625 70" style="; display: block; margin: auto auto auto auto" class="flowchart" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="816" id="mermaid-figure-2" height="480">
-<style>#mermaid-figure-2{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#mermaid-figure-2 .error-icon{fill:#552222;}#mermaid-figure-2 .error-text{fill:#552222;stroke:#552222;}#mermaid-figure-2 .edge-thickness-normal{stroke-width:1px;}#mermaid-figure-2 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-figure-2 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-figure-2 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-figure-2 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-figure-2 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-figure-2 .marker{fill:#333333;stroke:#333333;}#mermaid-figure-2 .marker.cross{stroke:#333333;}#mermaid-figure-2 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-figure-2 p{margin:0;}#mermaid-figure-2 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mermaid-figure-2 .cluster-label text{fill:#333;}#mermaid-figure-2 .cluster-label span{color:#333;}#mermaid-figure-2 .cluster-label span p{background-color:transparent;}#mermaid-figure-2 .label text,#mermaid-figure-2 span{fill:#333;color:#333;}#mermaid-figure-2 .node rect,#mermaid-figure-2 .node circle,#mermaid-figure-2 .node ellipse,#mermaid-figure-2 .node polygon,#mermaid-figure-2 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaid-figure-2 .rough-node .label text,#mermaid-figure-2 .node .label text{text-anchor:middle;}#mermaid-figure-2 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaid-figure-2 .node .label{text-align:center;}#mermaid-figure-2 .node.clickable{cursor:pointer;}#mermaid-figure-2 .arrowheadPath{fill:#333333;}#mermaid-figure-2 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaid-figure-2 .flowchart-link{stroke:#333333;fill:none;}#mermaid-figure-2 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaid-figure-2 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaid-figure-2 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaid-figure-2 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaid-figure-2 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaid-figure-2 .cluster text{fill:#333;}#mermaid-figure-2 .cluster span{color:#333;}#mermaid-figure-2 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaid-figure-2 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaid-figure-2 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-<g><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-pointEnd"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 0 L 10 5 L 0 10 z"></path></marker><marker orient="auto" markerheight="8" markerwidth="8" markerunits="userSpaceOnUse" refy="5" refx="4.5" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-pointStart"><path style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 0 5 L 10 10 L 10 0 z"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="11" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-circleEnd"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5" refx="-1" viewbox="0 0 10 10" class="marker flowchart-v2" id="mermaid-1753814743308_flowchart-v2-circleStart"><circle style="stroke-width: 1; stroke-dasharray: 1, 0;" class="arrowMarkerPath" r="5" cy="5" cx="5"></circle></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="12" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814743308_flowchart-v2-crossEnd"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><marker orient="auto" markerheight="11" markerwidth="11" markerunits="userSpaceOnUse" refy="5.2" refx="-1" viewbox="0 0 11 11" class="marker cross flowchart-v2" id="mermaid-1753814743308_flowchart-v2-crossStart"><path style="stroke-width: 2; stroke-dasharray: 1, 0;" class="arrowMarkerPath" d="M 1,1 l 9,9 M 10,1 l -9,9"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path marker-end="url(#mermaid-1753814743308_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_A_B_0" d="M138.547,35L142.714,35C146.88,35,155.214,35,161.464,35C167.714,35,171.88,35,175.38,35C178.88,35,181.714,35,183.13,35L184.547,35"></path><path marker-end="url(#mermaid-1753814743308_flowchart-v2-pointEnd)" style="" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" id="L_B_C_1" d="M311.172,35L315.339,35C319.505,35,327.839,35,334.089,35C340.339,35,344.505,35,348.005,35C351.505,35,354.339,35,355.755,35L357.172,35"></path></g><g class="edgeLabels"><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
-<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="edgeLabel"></span>
-</div>
-</foreignobject></g></g><g class="edgeLabel"><g transform="translate(0, 0)" class="label"><foreignobject height="0" width="0">
-<div class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="edgeLabel"></span>
-</div>
-</foreignobject></g></g></g><g class="nodes"><g transform="translate(73.2734375, 35)" id="flowchart-A-0" class="node default"><rect height="54" width="130.546875" y="-27" x="-65.2734375" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(-35.2734375, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="70.546875">
-<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="nodeLabel">
-<p>
-Input: -10
-</p>
-</span>
-</div>
-</foreignobject></g></g><g transform="translate(249.859375, 35)" id="flowchart-B-1" class="node default"><rect height="39" width="122.625" y="-19.5" x="-61.3125" ry="19.5" rx="19.5" style="fill:#fff3e0 !important" class="basic label-container"></rect><g transform="translate(-48.9375, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="97.875">
-<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="nodeLabel">
-<p>
-Endpoint: abs
-</p>
-</span>
-</div>
-</foreignobject></g></g><g transform="translate(429.84375, 35)" id="flowchart-C-3" class="node default"><rect height="54" width="137.34375" y="-27" x="-68.671875" data-et="node" data-id="abc" style="" class="basic label-container"></rect><g transform="translate(-38.671875, -12)" style="" class="label"><rect></rect><foreignobject height="24" width="77.34375">
-<div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" data-xmlns="http://www.w3.org/1999/xhtml">
-<span class="nodeLabel">
-<p>
-Output: 10
-</p>
-</span>
-</div>
-</foreignobject></g></g></g></g></g>
-</svg>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Input: -10] --&gt; B([Endpoint: abs])
+    B --&gt; C[Output: 10]
+    
+    style B fill:#fff3e0
+</pre>
 </div>
 <p></p></figure><p></p>
 </div>
@@ -505,13 +435,13 @@ access-control-allow-origin: *
 age: 0
 cache-control: public, max-age=0, must-revalidate
 content-type: application/json; charset=utf-8
-date: Tue, 29 Jul 2025 18:45:35 GMT
+date: Wed, 30 Jul 2025 19:28:27 GMT
 etag: "34-ew5GLD/BhDbtLNRb9EMt8ij47mw"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-nextjs-page: /api/v2/[operation]/[data]
 x-vercel-cache: MISS
-x-vercel-id: cle1::sfo1::tc69c-1753814735058-0aa7fcdcb041
+x-vercel-id: cle1::sfo1::5lrwt-1753903707320-edc1626d34fb
 content-length: 52
 
 {"operation":"abs","expression":"-10","result":"10"}</code></pre>
@@ -551,13 +481,13 @@ access-control-allow-origin: *
 age: 0
 cache-control: public, max-age=0, must-revalidate
 content-type: application/json; charset=utf-8
-date: Tue, 29 Jul 2025 18:45:35 GMT
+date: Wed, 30 Jul 2025 19:28:27 GMT
 etag: "34-ew5GLD/BhDbtLNRb9EMt8ij47mw"
 server: Vercel
 strict-transport-security: max-age=63072000; includeSubDomains; preload
 x-nextjs-page: /api/v2/[operation]/[data]
 x-vercel-cache: MISS
-x-vercel-id: cle1::sfo1::2w748-1753814735280-73e4b511c424
+x-vercel-id: cle1::sfo1::p4pgp-1753903707540-e7b810e3b4ae
 content-length: 52
 
 {"operation":"abs","expression":"-10","result":"10"}</code></pre>
@@ -890,55 +820,114 @@ list()</code></pre>
 <section id="generate-story-text-with-ellmer" class="slide level2">
 <h2>Generate story text with ellmer</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>generate_story <span class="ot">&lt;-</span> <span class="cf">function</span>(user_prompt,</span>
-<span id="cb35-2"><a href=""></a>                           <span class="at">num_paras =</span> <span class="dv">5</span>,</span>
-<span id="cb35-3"><a href=""></a>                           <span class="at">genre =</span> <span class="fu">c</span>(<span class="st">"&lt;vector of genres&gt;"</span>),</span>
-<span id="cb35-4"><a href=""></a>                           <span class="at">chat_fn =</span> ellmer<span class="sc">::</span>chat_google_gemini,</span>
-<span id="cb35-5"><a href=""></a>                           <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
-<span id="cb35-6"><a href=""></a>                           ...){</span>
-<span id="cb35-7"><a href=""></a>  system_prompt <span class="ot">&lt;-</span> <span class="fu">generate_story_system_prompt</span>(</span>
-<span id="cb35-8"><a href=""></a>    <span class="at">genre =</span> genre,</span>
-<span id="cb35-9"><a href=""></a>    <span class="at">num_paras =</span> num_paras</span>
-<span id="cb35-10"><a href=""></a>  )</span>
-<span id="cb35-11"><a href=""></a></span>
-<span id="cb35-12"><a href=""></a>  client <span class="ot">&lt;-</span> <span class="fu">make_chat</span>(</span>
-<span id="cb35-13"><a href=""></a>    chat_fn,</span>
-<span id="cb35-14"><a href=""></a>    <span class="at">system_prompt =</span> system_prompt,</span>
-<span id="cb35-15"><a href=""></a>    <span class="at">model =</span> model,</span>
-<span id="cb35-16"><a href=""></a>    ...</span>
-<span id="cb35-17"><a href=""></a>  )</span>
-<span id="cb35-18"><a href=""></a></span>
-<span id="cb35-19"><a href=""></a>  res <span class="ot">&lt;-</span> client<span class="sc">$</span><span class="fu">chat_structured</span>(</span>
-<span id="cb35-20"><a href=""></a>    user_prompt,</span>
-<span id="cb35-21"><a href=""></a>    <span class="at">type =</span> ellmer<span class="sc">::</span><span class="fu">type_object</span>(</span>
-<span id="cb35-22"><a href=""></a>        <span class="at">title =</span> ellmer<span class="sc">::</span><span class="fu">type_string</span>(<span class="st">"Title of the story. One sentence max."</span>),</span>
-<span id="cb35-23"><a href=""></a>        <span class="at">story =</span> ellmer<span class="sc">::</span><span class="fu">type_array</span>(</span>
-<span id="cb35-24"><a href=""></a>        <span class="fu">paste0</span>(<span class="st">"Return exactly "</span>,  num_paras,  <span class="st">" paragraphs, as an array. Each array element is a paragraph of the story. Do not return explanations or any text outside the array. Each paragraph must be self-contained, i.e., do not use blank lines or newlines to separate paragraphs inside elements."</span>),</span>
-<span id="cb35-25"><a href=""></a>        <span class="at">items =</span> ellmer<span class="sc">::</span><span class="fu">type_string</span>()</span>
-<span id="cb35-26"><a href=""></a>      )</span>
-<span id="cb35-27"><a href=""></a>    )</span>
-<span id="cb35-28"><a href=""></a>  )</span>
-<span id="cb35-29"><a href=""></a></span>
-<span id="cb35-30"><a href=""></a>  res</span>
-<span id="cb35-31"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35" data-code-line-numbers="1-4|5-11|12-15|17-22|24-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="co"># Create a chat object</span></span>
+<span id="cb35-2"><a href=""></a>make_chat <span class="ot">&lt;-</span> <span class="cf">function</span>(chat_fn, ...) {</span>
+<span id="cb35-3"><a href=""></a>  <span class="fu">chat_fn</span>(...)</span>
+<span id="cb35-4"><a href=""></a>}</span>
+<span id="cb35-5"><a href=""></a><span class="co"># Generate story function</span></span>
+<span id="cb35-6"><a href=""></a>generate_story <span class="ot">&lt;-</span> <span class="cf">function</span>(user_prompt,</span>
+<span id="cb35-7"><a href=""></a>                           <span class="at">num_paras =</span> <span class="dv">5</span>,</span>
+<span id="cb35-8"><a href=""></a>                           <span class="at">genre =</span> <span class="fu">c</span>(<span class="st">"&lt;vector of genres&gt;"</span>),</span>
+<span id="cb35-9"><a href=""></a>                           <span class="at">chat_fn =</span> ellmer<span class="sc">::</span>chat_google_gemini,</span>
+<span id="cb35-10"><a href=""></a>                           <span class="at">model =</span> <span class="st">"gemini-2.0-flash"</span>,</span>
+<span id="cb35-11"><a href=""></a>                           ...){</span>
+<span id="cb35-12"><a href=""></a>  system_prompt <span class="ot">&lt;-</span> <span class="fu">generate_story_system_prompt</span>(</span>
+<span id="cb35-13"><a href=""></a>    <span class="at">genre =</span> genre,</span>
+<span id="cb35-14"><a href=""></a>    <span class="at">num_paras =</span> num_paras</span>
+<span id="cb35-15"><a href=""></a>  )</span>
+<span id="cb35-16"><a href=""></a></span>
+<span id="cb35-17"><a href=""></a>  client <span class="ot">&lt;-</span> <span class="fu">make_chat</span>(</span>
+<span id="cb35-18"><a href=""></a>    chat_fn,</span>
+<span id="cb35-19"><a href=""></a>    <span class="at">system_prompt =</span> system_prompt,</span>
+<span id="cb35-20"><a href=""></a>    <span class="at">model =</span> model,</span>
+<span id="cb35-21"><a href=""></a>    ...</span>
+<span id="cb35-22"><a href=""></a>  )</span>
+<span id="cb35-23"><a href=""></a></span>
+<span id="cb35-24"><a href=""></a>  res <span class="ot">&lt;-</span> client<span class="sc">$</span><span class="fu">chat_structured</span>(</span>
+<span id="cb35-25"><a href=""></a>    user_prompt,</span>
+<span id="cb35-26"><a href=""></a>    <span class="at">type =</span> ellmer<span class="sc">::</span><span class="fu">type_object</span>(</span>
+<span id="cb35-27"><a href=""></a>        <span class="at">title =</span> ellmer<span class="sc">::</span><span class="fu">type_string</span>(<span class="st">"Title of the story. One sentence max."</span>),</span>
+<span id="cb35-28"><a href=""></a>        <span class="at">story =</span> ellmer<span class="sc">::</span><span class="fu">type_array</span>(</span>
+<span id="cb35-29"><a href=""></a>        <span class="fu">paste0</span>(<span class="st">"Return exactly "</span>,  num_paras,  <span class="st">" paragraphs, as an array. Each array element is a paragraph of the story. Do not return explanations or any text outside the array. Each paragraph must be self-contained, i.e., do not use blank lines or newlines to separate paragraphs inside elements."</span>),</span>
+<span id="cb35-30"><a href=""></a>        <span class="at">items =</span> ellmer<span class="sc">::</span><span class="fu">type_string</span>()</span>
+<span id="cb35-31"><a href=""></a>      )</span>
+<span id="cb35-32"><a href=""></a>    )</span>
+<span id="cb35-33"><a href=""></a>  )</span>
+<span id="cb35-34"><a href=""></a></span>
+<span id="cb35-35"><a href=""></a>  res</span>
+<span id="cb35-36"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="result" class="slide level2">
+<h2>Result</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="fu">library</span>(storytelling)</span>
+<span id="cb36-2"><a href=""></a><span class="fu">generate_story</span>(</span>
+<span id="cb36-3"><a href=""></a>  <span class="st">"Tell me a story about a dragon who baked cookies"</span>, </span>
+<span id="cb36-4"><a href=""></a>  <span class="at">num_paras =</span> <span class="dv">2</span></span>
+<span id="cb36-5"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>$title
+[1] "The Dragon Who Baked Cookies"
+
+$story
+[1] "Ignis was no ordinary dragon; while his brethren terrorized villages, he harbored a secret passion: baking. One day, a desperate plea echoed through the valley; the annual Spring Festival was without treats! Seizing his chance, Ignis gathered his courage (and a mountain of flour), and ventured towards the village, his heart pounding like a drum solo. The villagers, initially terrified by the sight of the approaching dragon, were soon captivated by the sweet aroma wafting from his direction."
+[2] "With a flourish, Ignis unveiled his masterpiece: mountains of cookies, each one lovingly crafted and uniquely flavored. The villagers, initially hesitant, cautiously tried his creations, their faces lighting up with delight. The Spring Festival was saved, and Ignis, the cookie-baking dragon, became a beloved hero, proving that even the fiercest of creatures can have a sweet side."                                                                                                                 </code></pre>
+</div>
 </div>
 </section>
 <section id="generate-multiple-images-in-parallel" class="slide level2">
 <h2>Generate multiple images in parallel</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>generate_images <span class="ot">&lt;-</span> <span class="cf">function</span>(image_prompts,</span>
-<span id="cb36-2"><a href=""></a>                            ...){</span>
-<span id="cb36-3"><a href=""></a>  reqs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
-<span id="cb36-4"><a href=""></a>    image_prompts,</span>
-<span id="cb36-5"><a href=""></a>    <span class="cf">function</span>(x){</span>
-<span id="cb36-6"><a href=""></a>      <span class="fu">req_single_image</span>(x, image_prompts<span class="sc">$</span>negative_prompt, ...)</span>
-<span id="cb36-7"><a href=""></a>    }</span>
-<span id="cb36-8"><a href=""></a>  )</span>
-<span id="cb36-9"><a href=""></a>  resps <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform_parallel</span>(reqs, <span class="at">on_error =</span> <span class="st">"continue"</span>)</span>
-<span id="cb36-10"><a href=""></a>  </span>
-<span id="cb36-11"><a href=""></a>  <span class="co"># All images</span></span>
-<span id="cb36-12"><a href=""></a>  <span class="fu">lapply</span>(resps, get_raw_image)</span>
-<span id="cb36-13"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38" data-code-line-numbers="|3-8|9|12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>generate_images <span class="ot">&lt;-</span> <span class="cf">function</span>(image_prompts,</span>
+<span id="cb38-2"><a href=""></a>                            ...){</span>
+<span id="cb38-3"><a href=""></a>  reqs <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
+<span id="cb38-4"><a href=""></a>    image_prompts,</span>
+<span id="cb38-5"><a href=""></a>    <span class="cf">function</span>(x){</span>
+<span id="cb38-6"><a href=""></a>      <span class="fu">req_single_image</span>(x, image_prompts<span class="sc">$</span>negative_prompt, ...)</span>
+<span id="cb38-7"><a href=""></a>    }</span>
+<span id="cb38-8"><a href=""></a>  )</span>
+<span id="cb38-9"><a href=""></a>  resps <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">req_perform_parallel</span>(reqs, <span class="at">on_error =</span> <span class="st">"continue"</span>)</span>
+<span id="cb38-10"><a href=""></a>  </span>
+<span id="cb38-11"><a href=""></a>  <span class="co"># All images</span></span>
+<span id="cb38-12"><a href=""></a>  <span class="fu">lapply</span>(resps, get_raw_image)</span>
+<span id="cb38-13"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="result-1" class="slide level2">
+<h2>Result</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>image_prompts <span class="ot">&lt;-</span> <span class="fu">generate_image_prompts</span>(story_text<span class="sc">$</span>story)</span>
+<span id="cb39-2"><a href=""></a>image_list <span class="ot">&lt;-</span> <span class="fu">generate_images</span>(image_prompts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="fig-elephants" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-elephants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/res1.png"></p>
+<figcaption>First image</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/images/res2.png"></p>
+<figcaption>Second image</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-elephants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
 </div>
 </section></section>
 <section>
@@ -949,102 +938,102 @@ list()</code></pre>
 <section id="creating-a-request" class="slide level2">
 <h2>Creating a request</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37" data-code-line-numbers="1-4|5|6-11|12-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>frstore_req <span class="ot">&lt;-</span> <span class="cf">function</span>(document_path, </span>
-<span id="cb37-2"><a href=""></a>                        id_token, </span>
-<span id="cb37-3"><a href=""></a>                        <span class="at">project_id =</span> <span class="st">"&lt;project-id&gt;"</span>, </span>
-<span id="cb37-4"><a href=""></a>                        <span class="at">base_url =</span> <span class="st">"https://firestore.googleapis.com/v1beta1"</span>){</span>
-<span id="cb37-5"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
-<span id="cb37-6"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_path_append</span>(</span>
-<span id="cb37-7"><a href=""></a>      <span class="st">"projects"</span>,</span>
-<span id="cb37-8"><a href=""></a>      project_id,</span>
-<span id="cb37-9"><a href=""></a>      <span class="st">"databases/(default)/documents"</span>,</span>
-<span id="cb37-10"><a href=""></a>      document_path</span>
-<span id="cb37-11"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb37-12"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_headers</span>(</span>
-<span id="cb37-13"><a href=""></a>      <span class="st">"Content-Type"</span> <span class="ot">=</span> <span class="st">"application/json"</span>,</span>
-<span id="cb37-14"><a href=""></a>      <span class="st">"Authorization"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, id_token)</span>
-<span id="cb37-15"><a href=""></a>    )</span>
-<span id="cb37-16"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="1-4|5|6-11|12-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>frstore_req <span class="ot">&lt;-</span> <span class="cf">function</span>(document_path, </span>
+<span id="cb40-2"><a href=""></a>                        id_token, </span>
+<span id="cb40-3"><a href=""></a>                        <span class="at">project_id =</span> <span class="st">"&lt;project-id&gt;"</span>, </span>
+<span id="cb40-4"><a href=""></a>                        <span class="at">base_url =</span> <span class="st">"https://firestore.googleapis.com/v1beta1"</span>){</span>
+<span id="cb40-5"><a href=""></a>  httr2<span class="sc">::</span><span class="fu">request</span>(base_url) <span class="sc">|&gt;</span></span>
+<span id="cb40-6"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_url_path_append</span>(</span>
+<span id="cb40-7"><a href=""></a>      <span class="st">"projects"</span>,</span>
+<span id="cb40-8"><a href=""></a>      project_id,</span>
+<span id="cb40-9"><a href=""></a>      <span class="st">"databases/(default)/documents"</span>,</span>
+<span id="cb40-10"><a href=""></a>      document_path</span>
+<span id="cb40-11"><a href=""></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb40-12"><a href=""></a>    httr2<span class="sc">::</span><span class="fu">req_headers</span>(</span>
+<span id="cb40-13"><a href=""></a>      <span class="st">"Content-Type"</span> <span class="ot">=</span> <span class="st">"application/json"</span>,</span>
+<span id="cb40-14"><a href=""></a>      <span class="st">"Authorization"</span> <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Bearer"</span>, id_token)</span>
+<span id="cb40-15"><a href=""></a>    )</span>
+<span id="cb40-16"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="handling-errors" class="slide level2">
 <h2>Handling errors</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38" data-code-line-numbers="|1|2|3-12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>frstore_error_handler <span class="ot">&lt;-</span> <span class="cf">function</span>(e) {</span>
-<span id="cb38-2"><a href=""></a>  resp_err <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">last_response</span>()</span>
-<span id="cb38-3"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(resp_err)) {</span>
-<span id="cb38-4"><a href=""></a>    resp_err <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(resp_err)<span class="sc">$</span>error</span>
-<span id="cb38-5"><a href=""></a>    err_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb38-6"><a href=""></a>      <span class="at">error =</span> <span class="fu">list</span>(</span>
-<span id="cb38-7"><a href=""></a>        <span class="at">code =</span> resp_err<span class="sc">$</span>code,</span>
-<span id="cb38-8"><a href=""></a>        <span class="at">message =</span> resp_err<span class="sc">$</span>message</span>
-<span id="cb38-9"><a href=""></a>      )</span>
-<span id="cb38-10"><a href=""></a>    )</span>
-<span id="cb38-11"><a href=""></a>    <span class="fu">return</span>(err_list)</span>
-<span id="cb38-12"><a href=""></a>  }</span>
-<span id="cb38-13"><a href=""></a>  <span class="fu">stop</span>(<span class="fu">conditionMessage</span>(e), <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-14"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41" data-code-line-numbers="|1|2|3-12|13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>frstore_error_handler <span class="ot">&lt;-</span> <span class="cf">function</span>(e) {</span>
+<span id="cb41-2"><a href=""></a>  resp_err <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">last_response</span>()</span>
+<span id="cb41-3"><a href=""></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(resp_err)) {</span>
+<span id="cb41-4"><a href=""></a>    resp_err <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">resp_body_json</span>(resp_err)<span class="sc">$</span>error</span>
+<span id="cb41-5"><a href=""></a>    err_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb41-6"><a href=""></a>      <span class="at">error =</span> <span class="fu">list</span>(</span>
+<span id="cb41-7"><a href=""></a>        <span class="at">code =</span> resp_err<span class="sc">$</span>code,</span>
+<span id="cb41-8"><a href=""></a>        <span class="at">message =</span> resp_err<span class="sc">$</span>message</span>
+<span id="cb41-9"><a href=""></a>      )</span>
+<span id="cb41-10"><a href=""></a>    )</span>
+<span id="cb41-11"><a href=""></a>    <span class="fu">return</span>(err_list)</span>
+<span id="cb41-12"><a href=""></a>  }</span>
+<span id="cb41-13"><a href=""></a>  <span class="fu">stop</span>(<span class="fu">conditionMessage</span>(e), <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb41-14"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="creating-a-document-on-firestore-database-with-story-data" class="slide level2">
 <h2>Creating a document on Firestore database with story data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39" data-code-line-numbers="|1|15-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>frstore_create_document <span class="ot">&lt;-</span> <span class="cf">function</span>(document_path, id_token, <span class="at">data =</span> <span class="cn">NULL</span>){</span>
-<span id="cb39-2"><a href=""></a>  partial_path <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"/[^/]*$"</span>, <span class="st">""</span>, document_path)</span>
-<span id="cb39-3"><a href=""></a>  document <span class="ot">&lt;-</span> <span class="fu">tail</span>(<span class="fu">strsplit</span>(document_path, <span class="st">"/"</span>)[[<span class="dv">1</span>]], <span class="dv">1</span>)</span>
-<span id="cb39-4"><a href=""></a></span>
-<span id="cb39-5"><a href=""></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(data)){</span>
-<span id="cb39-6"><a href=""></a>    <span class="fu">tryCatch</span>(</span>
-<span id="cb39-7"><a href=""></a>      <span class="at">expr =</span> <span class="fu">frstore_req</span>(partial_path, id_token) <span class="sc">|&gt;</span></span>
-<span id="cb39-8"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">documentId =</span> document) <span class="sc">|&gt;</span></span>
-<span id="cb39-9"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_body_raw</span>(<span class="st">"{}"</span>, <span class="st">"application/json"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb39-10"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_method</span>(<span class="st">"POST"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb39-11"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>(),</span>
-<span id="cb39-12"><a href=""></a>      <span class="at">error =</span> frstore_error_handler</span>
-<span id="cb39-13"><a href=""></a>    )</span>
-<span id="cb39-14"><a href=""></a>  } <span class="cf">else</span> {</span>
-<span id="cb39-15"><a href=""></a>    <span class="fu">tryCatch</span>(</span>
-<span id="cb39-16"><a href=""></a>      <span class="at">expr =</span> <span class="fu">frstore_req</span>(partial_path, id_token) <span class="sc">|&gt;</span></span>
-<span id="cb39-17"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">documentId =</span> document) <span class="sc">|&gt;</span></span>
-<span id="cb39-18"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_body_json</span>(<span class="at">data =</span> data) <span class="sc">|&gt;</span></span>
-<span id="cb39-19"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>(),</span>
-<span id="cb39-20"><a href=""></a>      <span class="at">error =</span> frstore_error_handler</span>
-<span id="cb39-21"><a href=""></a>    )</span>
-<span id="cb39-22"><a href=""></a>  }</span>
-<span id="cb39-23"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42" data-code-line-numbers="|1|15-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a>frstore_create_document <span class="ot">&lt;-</span> <span class="cf">function</span>(document_path, id_token, <span class="at">data =</span> <span class="cn">NULL</span>){</span>
+<span id="cb42-2"><a href=""></a>  partial_path <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"/[^/]*$"</span>, <span class="st">""</span>, document_path)</span>
+<span id="cb42-3"><a href=""></a>  document <span class="ot">&lt;-</span> <span class="fu">tail</span>(<span class="fu">strsplit</span>(document_path, <span class="st">"/"</span>)[[<span class="dv">1</span>]], <span class="dv">1</span>)</span>
+<span id="cb42-4"><a href=""></a></span>
+<span id="cb42-5"><a href=""></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(data)){</span>
+<span id="cb42-6"><a href=""></a>    <span class="fu">tryCatch</span>(</span>
+<span id="cb42-7"><a href=""></a>      <span class="at">expr =</span> <span class="fu">frstore_req</span>(partial_path, id_token) <span class="sc">|&gt;</span></span>
+<span id="cb42-8"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">documentId =</span> document) <span class="sc">|&gt;</span></span>
+<span id="cb42-9"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_body_raw</span>(<span class="st">"{}"</span>, <span class="st">"application/json"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-10"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_method</span>(<span class="st">"POST"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb42-11"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>(),</span>
+<span id="cb42-12"><a href=""></a>      <span class="at">error =</span> frstore_error_handler</span>
+<span id="cb42-13"><a href=""></a>    )</span>
+<span id="cb42-14"><a href=""></a>  } <span class="cf">else</span> {</span>
+<span id="cb42-15"><a href=""></a>    <span class="fu">tryCatch</span>(</span>
+<span id="cb42-16"><a href=""></a>      <span class="at">expr =</span> <span class="fu">frstore_req</span>(partial_path, id_token) <span class="sc">|&gt;</span></span>
+<span id="cb42-17"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_url_query</span>(<span class="at">documentId =</span> document) <span class="sc">|&gt;</span></span>
+<span id="cb42-18"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_body_json</span>(<span class="at">data =</span> data) <span class="sc">|&gt;</span></span>
+<span id="cb42-19"><a href=""></a>        httr2<span class="sc">::</span><span class="fu">req_perform</span>(),</span>
+<span id="cb42-20"><a href=""></a>      <span class="at">error =</span> frstore_error_handler</span>
+<span id="cb42-21"><a href=""></a>    )</span>
+<span id="cb42-22"><a href=""></a>  }</span>
+<span id="cb42-23"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="storing-the-story-on-the-firestore-database-1" class="slide level2">
 <h2>Storing the story on the Firestore database</h2>
 <p>Save to database</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40" data-code-line-numbers="|1-2|3-5|6-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a><span class="co"># Upload images to imgur service</span></span>
-<span id="cb40-2"><a href=""></a>img_urls <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(all_images, upload_image)</span>
-<span id="cb40-3"><a href=""></a><span class="co"># Store on firestore</span></span>
-<span id="cb40-4"><a href=""></a><span class="fu">frstore_create_document</span>(</span>
-<span id="cb40-5"><a href=""></a>  <span class="fu">paste0</span>(<span class="st">"story/"</span>, <span class="fu">random_id</span>()),</span>
-<span id="cb40-6"><a href=""></a>  id_token,</span>
-<span id="cb40-7"><a href=""></a>  <span class="fu">list</span>(</span>
-<span id="cb40-8"><a href=""></a>    <span class="at">fields =</span> <span class="fu">list</span>(</span>
-<span id="cb40-9"><a href=""></a>      <span class="at">genre =</span> <span class="fu">list</span>(<span class="at">stringValue =</span> genre),</span>
-<span id="cb40-10"><a href=""></a>      <span class="at">title =</span> <span class="fu">list</span>(<span class="at">stringValue =</span> title),</span>
-<span id="cb40-11"><a href=""></a>      <span class="at">story =</span> <span class="fu">list</span>(</span>
-<span id="cb40-12"><a href=""></a>        <span class="at">arrayValue =</span> <span class="fu">list</span>(</span>
-<span id="cb40-13"><a href=""></a>          <span class="at">values =</span> <span class="fu">list</span>(</span>
-<span id="cb40-14"><a href=""></a>            <span class="fu">lapply</span>(story, <span class="cf">function</span>(x) <span class="fu">list</span>(<span class="at">stringValue =</span> x))</span>
-<span id="cb40-15"><a href=""></a>          )</span>
-<span id="cb40-16"><a href=""></a>        )</span>
-<span id="cb40-17"><a href=""></a>      ),</span>
-<span id="cb40-18"><a href=""></a>      <span class="at">img_urls =</span> <span class="fu">list</span>(</span>
-<span id="cb40-19"><a href=""></a>        <span class="at">arrayValue =</span> <span class="fu">list</span>(</span>
-<span id="cb40-20"><a href=""></a>          <span class="at">values =</span> <span class="fu">list</span>(</span>
-<span id="cb40-21"><a href=""></a>            <span class="fu">lapply</span>(img_urls, <span class="cf">function</span>(x) <span class="fu">list</span>(<span class="at">stringValue =</span> x))</span>
-<span id="cb40-22"><a href=""></a>          )</span>
-<span id="cb40-23"><a href=""></a>        )</span>
-<span id="cb40-24"><a href=""></a>      )</span>
-<span id="cb40-25"><a href=""></a>    )</span>
-<span id="cb40-26"><a href=""></a>  )</span>
-<span id="cb40-27"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43" data-code-line-numbers="|1-2|3-5|6-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="co"># Upload images to imgur service</span></span>
+<span id="cb43-2"><a href=""></a>img_urls <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(all_images, upload_image)</span>
+<span id="cb43-3"><a href=""></a><span class="co"># Store on firestore</span></span>
+<span id="cb43-4"><a href=""></a><span class="fu">frstore_create_document</span>(</span>
+<span id="cb43-5"><a href=""></a>  <span class="fu">paste0</span>(<span class="st">"story/"</span>, <span class="fu">random_id</span>()),</span>
+<span id="cb43-6"><a href=""></a>  id_token,</span>
+<span id="cb43-7"><a href=""></a>  <span class="fu">list</span>(</span>
+<span id="cb43-8"><a href=""></a>    <span class="at">fields =</span> <span class="fu">list</span>(</span>
+<span id="cb43-9"><a href=""></a>      <span class="at">genre =</span> <span class="fu">list</span>(<span class="at">stringValue =</span> genre),</span>
+<span id="cb43-10"><a href=""></a>      <span class="at">title =</span> <span class="fu">list</span>(<span class="at">stringValue =</span> title),</span>
+<span id="cb43-11"><a href=""></a>      <span class="at">story =</span> <span class="fu">list</span>(</span>
+<span id="cb43-12"><a href=""></a>        <span class="at">arrayValue =</span> <span class="fu">list</span>(</span>
+<span id="cb43-13"><a href=""></a>          <span class="at">values =</span> <span class="fu">list</span>(</span>
+<span id="cb43-14"><a href=""></a>            <span class="fu">lapply</span>(story, <span class="cf">function</span>(x) <span class="fu">list</span>(<span class="at">stringValue =</span> x))</span>
+<span id="cb43-15"><a href=""></a>          )</span>
+<span id="cb43-16"><a href=""></a>        )</span>
+<span id="cb43-17"><a href=""></a>      ),</span>
+<span id="cb43-18"><a href=""></a>      <span class="at">img_urls =</span> <span class="fu">list</span>(</span>
+<span id="cb43-19"><a href=""></a>        <span class="at">arrayValue =</span> <span class="fu">list</span>(</span>
+<span id="cb43-20"><a href=""></a>          <span class="at">values =</span> <span class="fu">list</span>(</span>
+<span id="cb43-21"><a href=""></a>            <span class="fu">lapply</span>(img_urls, <span class="cf">function</span>(x) <span class="fu">list</span>(<span class="at">stringValue =</span> x))</span>
+<span id="cb43-22"><a href=""></a>          )</span>
+<span id="cb43-23"><a href=""></a>        )</span>
+<span id="cb43-24"><a href=""></a>      )</span>
+<span id="cb43-25"><a href=""></a>    )</span>
+<span id="cb43-26"><a href=""></a>  )</span>
+<span id="cb43-27"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-3" class="slide level2">
@@ -1065,14 +1054,28 @@ list()</code></pre>
 <li>Many more</li>
 </ul>
 </section>
+<section id="fresh-from-the-oven" class="slide level2">
+<h2>Fresh from the oven</h2>
+<p>webR now supports <code>httr2</code> and <code>ellmer</code>! (Don’t share your API keys)</p>
+<blockquote class="bluesky-embed" data-bluesky-uri="at://did:plc:hnkswprmt42fkt2huzbkcpcx/app.bsky.feed.post/3lv6wsiaq7c24" data-bluesky-cid="bafyreib5rmmg5bf3sjran5kil726l5je2ltub6swta5k5xv6wnvanllvca" data-bluesky-embed-color-mode="system">
+<p lang="en">
+Thanks to some joint work with <span class="citation" data-cites="jeroenooms.bsky.social">@jeroenooms.bsky.social</span> the latest dev build of webR now supports the {curl} package, along with many other packages that rely on it! 🎉 If you're able to use a WebSocket SOCKS proxy (outside of the browser), you can now use {curl} to make HTTP requests in webR.
+</p>
+— George Stagg (<a href="https://bsky.app/profile/did:plc:hnkswprmt42fkt2huzbkcpcx?ref_src=embed"><span class="citation" data-cites="gws.phd">@gws.phd</span></a>) <a href="https://bsky.app/profile/did:plc:hnkswprmt42fkt2huzbkcpcx/post/3lv6wsiaq7c24?ref_src=embed">July 30, 2025 at 11:29 AM</a>
+</blockquote>
+<script async="" src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+<p><a href="https://webr.r-wasm.org/latest/#code=eJxNkMFKw0AQhvWap1gWoQm4m7ZGKsWC3gtKVNBTmCRDs2SzG3YnKTn7BL5Db76Bd9%2FLbXvxMnOY7%2F9mmK%2FPg4EOv98MKdJYL2R%2B6IGan7SxHaZ7LIvBo0v%2Fz2sg%2BL28UMYTaC17qFrYoY85at2h40kUvUxeeiQ0Y%2Fy43RbP%2BdP7x2bmbdX622adpoSe1pPV9mHvpRODUSM6j7LGcZ1lN7Og0Kp04Kb4LE2iqgFi94Ide2F7NKDiiLESPBaD02zDeEPU%2B2CHXsmQWkll03HBrwPW2RpPzK4nkVnRKaPEcr7MxHwlFncnJsSKFqcjxaPzwqtjiflrOIJ1yKC0A7HwlFzy5A8OyWia&amp;a">Live ellmer example</a></p>
+</section>
 <section id="questions" class="slide level2">
 <h2>Questions?</h2>
 <ul>
-<li><a href="https://github.com/durraniu/storytelling">storytelling</a><br>
-</li>
-<li><a href="https://github.com/durraniu/storytelling_app">App source</a><br>
-</li>
-<li><a href="https://github.com/Presage-Group/frstore">frstore</a></li>
+<li><p><a href="https://github.com/durraniu/storytelling">storytelling</a><br>
+</p></li>
+<li><p><a href="https://github.com/durraniu/storytelling_app">App source</a><br>
+</p></li>
+<li><p><a href="https://github.com/Presage-Group/frstore">frstore</a></p></li>
+<li><p><a href="https://dru.quarto.pub/web-apis/">Slides</a></p></li>
+<li><p><a href="https://github.com/durraniu/talk_user2025">Slides source</a></p></li>
 </ul>
 
 <img data-src="assets/images/qr-code.png" class="r-stretch quarto-figure-center"><p class="caption">Check out the app</p></section>

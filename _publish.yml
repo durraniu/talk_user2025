@@ -1,0 +1,4 @@
+- source: slides.qmd
+  quarto-pub:
+    - id: 5605047d-48a5-4b20-96d3-363eb32a935d
+      url: https://dru.quarto.pub/web-apis

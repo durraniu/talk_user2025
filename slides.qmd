@@ -1,5 +1,4 @@
 ---
-mermaid-format: svg
 code-annotations: hover
 revealjs-plugins:
   - highlightword
@@ -22,12 +21,6 @@ format:
 
 [Umair Durrani (Data Scientist at Presage Group)]{style="font-size:0.65em;"}
 :::
-
-## We're going to discuss ...
-
-1. What is a Web API?  
-2. Simple example  
-3. Advanced example: Communicating with LLMs and storing data  
 
 
 # A web API is like a **function** that exchanges data with the internet  
@@ -591,6 +584,12 @@ split_text
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "1-4|5-11|12-15|17-22|24-35"
+# Create a chat object
+make_chat <- function(chat_fn, ...) {
+  chat_fn(...)
+}
+# Generate story function
 generate_story <- function(user_prompt,
                            num_paras = 5,
                            genre = c("<vector of genres>"),
@@ -625,12 +624,31 @@ generate_story <- function(user_prompt,
 ```
 
 
+## Result
+
+
+```{r}
+#| echo: true
+#| eval: false
+library(storytelling)
+generate_story(
+  "Tell me a story about a dragon who baked cookies", 
+  num_paras = 2
+)
+```
+
+```{r}
+load(file = "assets/res/story_text.rda")
+story_text
+```
+
 
 ## Generate multiple images in parallel
 
 ```{r}
 #| echo: true
 #| eval: false
+#| code-line-numbers: "|3-8|9|12"
 generate_images <- function(image_prompts,
                             ...){
   reqs <- lapply(
@@ -645,6 +663,23 @@ generate_images <- function(image_prompts,
   lapply(resps, get_raw_image)
 }
 ```
+
+
+## Result
+
+```{r}
+#| echo: true
+#| eval: false
+image_prompts <- generate_image_prompts(story_text$story)
+image_list <- generate_images(image_prompts)
+```
+
+::: {#fig-elephants layout-ncol=2}
+
+![First image](assets/images/res1.png)
+
+![Second image](assets/images/res2.png)
+:::
 
 
 # Storing the story on the Firestore database
@@ -780,11 +815,23 @@ frstore_create_document(
 - Many more
 
 
+## Fresh from the oven
+
+webR now supports `httr2` and `ellmer`! (Don't share your API keys)  
+
+<blockquote class="bluesky-embed" data-bluesky-uri="at://did:plc:hnkswprmt42fkt2huzbkcpcx/app.bsky.feed.post/3lv6wsiaq7c24" data-bluesky-cid="bafyreib5rmmg5bf3sjran5kil726l5je2ltub6swta5k5xv6wnvanllvca" data-bluesky-embed-color-mode="system"><p lang="en">Thanks to some joint work with @jeroenooms.bsky.social the latest dev build of webR now supports the {curl} package, along with many other packages that rely on it! 🎉 If you&#x27;re able to use a WebSocket SOCKS proxy (outside of the browser), you can now use {curl} to make HTTP requests in webR.</p>&mdash; George Stagg (<a href="https://bsky.app/profile/did:plc:hnkswprmt42fkt2huzbkcpcx?ref_src=embed">@gws.phd</a>) <a href="https://bsky.app/profile/did:plc:hnkswprmt42fkt2huzbkcpcx/post/3lv6wsiaq7c24?ref_src=embed">July 30, 2025 at 11:29 AM</a></blockquote><script async src="https://embed.bsky.app/static/embed.js" charset="utf-8"></script>
+
+[Live ellmer example](https://webr.r-wasm.org/latest/#code=eJxNkMFKw0AQhvWap1gWoQm4m7ZGKsWC3gtKVNBTmCRDs2SzG3YnKTn7BL5Db76Bd9%2FLbXvxMnOY7%2F9mmK%2FPg4EOv98MKdJYL2R%2B6IGan7SxHaZ7LIvBo0v%2Fz2sg%2BL28UMYTaC17qFrYoY85at2h40kUvUxeeiQ0Y%2Fy43RbP%2BdP7x2bmbdX622adpoSe1pPV9mHvpRODUSM6j7LGcZ1lN7Og0Kp04Kb4LE2iqgFi94Ide2F7NKDiiLESPBaD02zDeEPU%2B2CHXsmQWkll03HBrwPW2RpPzK4nkVnRKaPEcr7MxHwlFncnJsSKFqcjxaPzwqtjiflrOIJ1yKC0A7HwlFzy5A8OyWia&a)
+
+
 ## Questions?
 
 - [storytelling](https://github.com/durraniu/storytelling)  
 - [App source](https://github.com/durraniu/storytelling_app)  
 - [frstore](https://github.com/Presage-Group/frstore)  
+
+- [Slides](https://dru.quarto.pub/web-apis/)
+- [Slides source](https://github.com/durraniu/talk_user2025)
 
 ![Check out the app](assets/images/qr-code.png)
 
